@@ -1,0 +1,28 @@
+{
+  "name": "apiworks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon -e js,sql,json index.js"
+  },
+  "author": "Igor Sosa Mayor <joseleopoldo1792@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@tidyjs/tidy": "^2.5.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-rate-limit": "^6.6.0",
+    "helmet": "^6.0.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.8.0",
+    "pg-monitor": "^1.5.0",
+    "pg-promise": "^10.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
