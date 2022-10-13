@@ -7,7 +7,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 require("dotenv").config();
-const dbFunctions = require("./functions/dbfunctions");
+
+const dbfunctions = require("./db/dbgeneral");
 
 const app = express();
 app.use(morgan("tiny"));
@@ -43,17 +44,10 @@ app.use(limiter);
 
 app.use(cors());
 
-// app.get("/generaldata/", dbFunctions.getGeneralData);
-// app.get("/prueba/", dbFunctions.getBishopsPerCentury);
-// app.get("/dioceses/", dbFunctions.getDioceses);
-// app.get("/dioceses/clusters/", dbFunctions.getDiocesesClusters);
+app.get("/statistics/general/", dbfunctions.stats.mainPage);
 
-// app.get("/orders/", dbFunctions.getOrders);
-// app.get("/orders/presence/", dbFunctions.getOrdersPresence);
-// app.get("/orders/absence/", dbFunctions.getOrdersAbsence);
-// app.get("/orders/temporalseries/", dbFunctions.getOrdersTemporalSeries);
-
-// app.get("/bishops/positions/", dbFunctions.getBishopsPositions);
+app.get("/category/general/", dbfunctions.cats.summaryCat);
+app.get("/places/", dbfunctions.places.places);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:${process.env.PORT}/`);
