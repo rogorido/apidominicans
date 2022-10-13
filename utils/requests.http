@@ -1,3 +1,20 @@
-# get orders with bishops
-GET http://localhost:8001/orders/?bishops=true
+# get statisticslanguages
+GET http://localhost:8009/statistics/general/
+
+# get summary de cateogoría 
+GET http://localhost:8009/category/general/?category=309
+
+# get summary de cateogoría con error 
+GET http://localhost:8009/category/general/?category=x
+
+
+# get summary de cateogoría con error 
+GET http://localhost:8009/authors/
+
+# get summary de cateogoría con error 
+GET http://localhost:8009/places/
+
+# get roma 
+GET http://localhost:8009/places/?place_id=3
+
 
