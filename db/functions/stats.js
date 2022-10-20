@@ -2,6 +2,7 @@ const { db, pgp } = require("../dbconnect");
 // const { FilterSetGeneral, readSQL } = require("./helpers");
 
 const {
+  sqlStatisticsMainPage,
   sqlStatisticsLanguages,
   sqlWorksWithoutThemes,
   sqlFormats,
@@ -9,28 +10,18 @@ const {
 
 function mainPage(req, res) {
   db.task("stats-general", async (t) => {
-    const totalWorks = await t.one(
-      "SELECT COUNT(DISTINCT work_id) AS total FROM works"
-    );
-
-    const totalManuscrits = await t.one(
-      "SELECT COUNT(DISTINCT work_id) as total FROM works WHERE manuscrit = TRUE"
-    );
-
-    const totalPrinted = await t.one(
-      "SELECT COUNT(DISTINCT work_id) as total FROM works WHERE printed = TRUE"
-    );
-
-    const totalAuthors = await t.one(
-      "SELECT COUNT(DISTINCT author_id) AS total FROM works"
-    );
+    // multi returns an Array of arrays. Y por tnato luego tengo q coger
+    // el primer elemento...
+    const [totalWorks, totalManuscrits, totalPrinted, totalAuthors] =
+      await t.multi(sqlStatisticsMainPage);
 
     const totalWorksWithoutThemes = await t.many(sqlWorksWithoutThemes);
     const totalLanguages = await t.many(sqlStatisticsLanguages);
 
     const percentageManuscrits =
-      (totalManuscrits.total / totalWorks.total) * 100;
-    const percentagePrinted = (totalPrinted.total / totalWorks.total) * 100;
+      (totalManuscrits[0].total / totalWorks[0].total) * 100;
+    const percentagePrinted =
+      (totalPrinted[0].total / totalWorks[0].total) * 100;
 
     const totalFormats = await t.many(sqlFormats, {
       wheresql: pgp.as.format(""),
@@ -38,10 +29,10 @@ function mainPage(req, res) {
     });
 
     return {
-      totalWorks: +totalWorks.total,
-      totalManuscrits: +totalManuscrits.total,
-      totalPrinted: +totalPrinted.total,
-      totalAuthors: +totalAuthors.total,
+      totalWorks: +totalWorks[0].total,
+      totalManuscrits: +totalManuscrits[0].total,
+      totalPrinted: +totalPrinted[0].total,
+      totalAuthors: +totalAuthors[0].total,
       percentageManuscrits,
       percentagePrinted,
       totalLanguages: totalLanguages,

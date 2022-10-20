@@ -4,6 +4,9 @@ GET http://localhost:8009/statistics/general/
 # get summary de cateogoría 
 GET http://localhost:8009/category/general/?category=309
 
+# get summary de cateogoría 
+GET http://localhost:8009/category/general/?category=333
+
 # get summary de cateogoría con error 
 GET http://localhost:8009/category/general/?category=x
 
