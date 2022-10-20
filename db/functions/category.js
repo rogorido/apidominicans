@@ -6,6 +6,8 @@ const {
   sqlAuthorsCategory,
   sqlPlacesCategory,
   sqlCategoryDecades,
+  sqlCategoryRelated,
+  sqlCategoryConcreteAuthors,
 } = require("../readsqls");
 
 // creamos una string de una query con los filtros q se le pasa
@@ -50,6 +52,13 @@ function summaryCat(req, res) {
 
     const totaldecades = await t.any(sqlCategoryDecades, category);
 
+    const related_cats = await t.manyOrNone(sqlCategoryRelated, category);
+
+    const concrete_authors = await t.manyOrNone(
+      sqlCategoryConcreteAuthors,
+      category
+    );
+
     return {
       totalWorks,
       totalManuscrits,
@@ -59,6 +68,8 @@ function summaryCat(req, res) {
       percentagePrinted,
       totalPlaces,
       totaldecades,
+      related_cats,
+      concrete_authors,
     };
   })
     .then((data) => {
