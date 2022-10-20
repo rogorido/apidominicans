@@ -1,6 +1,6 @@
 {
   "name": "apiworks",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "API for analyzing the works of dominican friars.",
   "main": "index.js",
   "scripts": {

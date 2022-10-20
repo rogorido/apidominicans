@@ -44,10 +44,17 @@ app.use(limiter);
 
 app.use(cors());
 
+// devolvemos la versión de la API
+app.get("/", (req, res) => {
+  res.send({ version: process.env.npm_package_version });
+});
+
 app.get("/statistics/general/", dbfunctions.stats.mainPage);
 
 app.get("/category/general/", dbfunctions.cats.summaryCat);
 app.get("/places/", dbfunctions.places.places);
+
+// console.log(process.env.npm_package_version);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:${process.env.PORT}/`);
