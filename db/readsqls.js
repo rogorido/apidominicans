@@ -6,6 +6,8 @@ const sqlStatisticsLanguages = readSQL(
   "../sql/statistics/statisticslanguages.sql"
 );
 
+const sqlStatisticsMainPage = readSQL("../sql/statistics/stats_mainpage.sql");
+
 const sqlWorksWithoutThemes = readSQL(
   "../sql/statistics/stats_works_without_theme.sql"
 );
@@ -30,6 +32,7 @@ const sqlPlacesbyIdOtherData = readSQL("../sql/places/placeid_otherdata.sql");
 
 module.exports = {
   sqlStatisticsLanguages,
+  sqlStatisticsMainPage,
   sqlWorksWithoutThemes,
   sqlWorksCategory,
   sqlAuthorsCategory,
