@@ -17,6 +17,10 @@ const sqlWorksCategory = readSQL("../sql/category/totalworks.sql");
 const sqlAuthorsCategory = readSQL("../sql/category/totalauthors.sql");
 const sqlPlacesCategory = readSQL("../sql/category/totalplaces.sql");
 const sqlCategoryDecades = readSQL("../sql/category/cats_decades.sql");
+const sqlCategoryRelated = readSQL("../sql/category/related_cats.sql");
+const sqlCategoryConcreteAuthors = readSQL(
+  "../sql/category/authorswithcat.sql"
+);
 
 // places
 const sqlPlacesTotal = readSQL("../sql/places/totalplaces.sql");
@@ -31,6 +35,8 @@ module.exports = {
   sqlAuthorsCategory,
   sqlPlacesCategory,
   sqlCategoryDecades,
+  sqlCategoryRelated,
+  sqlCategoryConcreteAuthors,
   sqlPlacesTotal,
   sqlPlacesbyIdCategories,
   sqlPlacesbyIdDecades,
