@@ -61,8 +61,8 @@ function summaryCat(req, res) {
 
     return {
       totalWorks,
-      totalManuscrits,
       totalPrinted,
+      totalManuscrits,
       totalAuthors,
       percentageManuscrits,
       percentagePrinted,
@@ -73,7 +73,6 @@ function summaryCat(req, res) {
     };
   })
     .then((data) => {
-      //      console.log(data);
       res.send(data);
     })
     .catch((error) => {

@@ -1,10 +1,14 @@
-
 --- categoría X por década [pero cuidado esto no tiene en cuenta ms!]
+
 WITH
 series AS
-      (SELECT generate_series(1450, 1700, 10) AS r_from),
-      rangos AS (
-      SELECT r_from, (r_from + 9) AS r_to FROM series)
+  (SELECT generate_series(1450, 1700, 10) AS r_from),
+
+-- generamos los rangos
+rangos AS
+  (SELECT r_from, (r_from + 9) AS r_to FROM series)
+
+-- exttramos los datos
 SELECT r_from, r_to,
        (SELECT count(*) FROM works.w_originales_reediciones
         JOIN works_themes USING (work_id)
