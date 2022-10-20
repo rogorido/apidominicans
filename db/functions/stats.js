@@ -1,5 +1,4 @@
 const { db, pgp } = require("../dbconnect");
-// const { FilterSetGeneral, readSQL } = require("./helpers");
 
 const {
   sqlStatisticsMainPage,
@@ -41,7 +40,6 @@ function mainPage(req, res) {
     };
   })
     .then((data) => {
-      //      console.log(data);
       res.send(data);
     })
     .catch((error) => {
