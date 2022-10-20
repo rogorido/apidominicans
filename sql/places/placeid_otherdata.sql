@@ -2,7 +2,6 @@
 
 SELECT COUNT(DISTINCT person_id) AS total
 FROM works.w_originales_reediciones w
-JOIN works USING (work_id)
 JOIN persons ON  person_id = author_id
 WHERE w.place_print_id = $1;
 
