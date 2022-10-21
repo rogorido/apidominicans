@@ -11,4 +11,5 @@ SELECT CASE
     COUNT(*) FILTER (WHERE original = false) AS totalreed
 FROM works.w_originales_reediciones w
 ${wheresql:raw}
-GROUP BY 1;
+GROUP BY 1
+ORDER BY total DESC;

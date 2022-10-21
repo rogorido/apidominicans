@@ -14,7 +14,7 @@ function mainPage(req, res) {
     const [totalWorks, totalManuscrits, totalPrinted, totalAuthors] =
       await t.multi(sqlStatisticsMainPage);
 
-    const totalWorksWithoutThemes = await t.many(sqlWorksWithoutThemes);
+    const totalWorksWithoutThemes = await t.one(sqlWorksWithoutThemes);
     const totalLanguages = await t.many(sqlStatisticsLanguages);
 
     const percentageManuscrits =
