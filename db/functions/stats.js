@@ -5,6 +5,7 @@ const {
   sqlStatisticsLanguages,
   sqlWorksWithoutThemes,
   sqlFormats,
+  sqlMainPageTotalPlaces,
 } = require("../readsqls");
 
 function mainPage(req, res) {
@@ -27,6 +28,8 @@ function mainPage(req, res) {
       // wheresql: pgp.as.format("where place_print_id = $1", 3),
     });
 
+    const totalPlaces = await t.any(sqlMainPageTotalPlaces);
+
     return {
       totalWorks: +totalWorks[0].total,
       totalManuscrits: +totalManuscrits[0].total,
@@ -37,6 +40,7 @@ function mainPage(req, res) {
       totalLanguages: totalLanguages,
       totalWorksWithoutThemes: +totalWorksWithoutThemes.total,
       totalFormats,
+      totalPlaces,
     };
   })
     .then((data) => {
