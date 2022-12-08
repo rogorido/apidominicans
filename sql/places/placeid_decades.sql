@@ -11,15 +11,15 @@ SELECT r_from, r_to,
        (SELECT count(*) FROM works.w_originales_reediciones
                WHERE date_print BETWEEN r_from AND r_to
                      AND date_print <> 1400
-                     AND place_print_id = $1)  AS total,
+                     AND place_print_id = $1)::integer  AS total,
        (SELECT count(*) FROM works.w_originales_reediciones
         WHERE date_print BETWEEN r_from AND r_to
                      AND date_print <> 1400
                      AND place_print_id = $1
-                     AND original = TRUE )  AS totaloriginal,
+                     AND original = TRUE )::integer  AS totaloriginal,
        (SELECT count(*) FROM works.w_originales_reediciones
         WHERE date_print BETWEEN r_from AND r_to
                      AND date_print <> 1400
                      AND place_print_id = $1
-                     AND original = FALSE )  AS totalreed
+                     AND original = FALSE )::integer  AS totalreed
 FROM rangos;

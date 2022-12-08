@@ -18,5 +18,7 @@ WITH w AS
   JOIN w USING (work_id)
   GROUP BY 1)
 
-SELECT theme, total, round(total * 100 / t.totales::NUMERIC, 2)
+SELECT theme,
+       total::INTEGER,
+       round(total * 100 / t.totales::NUMERIC, 2)::REAL AS porcentaje
 FROM c, T;

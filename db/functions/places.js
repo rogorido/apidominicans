@@ -9,18 +9,18 @@ const {
 } = require("../readsqls");
 
 async function places(req, res) {
-  if (req.query.place_id == undefined) {
+  if (req.params.id == undefined) {
     const places = await db.many(sqlPlacesTotal);
 
     res.send(places);
   } else {
-    const place_id = req.query.place_id;
+    const place_id = req.params.id;
 
     db.task("place_by_id", async (t) => {
       const place_cats = await t.any(sqlPlacesbyIdCategories, place_id);
-      const place_dec = await t.any(sqlPlacesbyIdDecades, place_id);
+      const decades = await t.any(sqlPlacesbyIdDecades, place_id);
 
-      const [persons, noprintdata] = await t.multi(
+      const [authors, noprintdata] = await t.multi(
         sqlPlacesbyIdOtherData,
         place_id
       );
@@ -29,11 +29,14 @@ async function places(req, res) {
         wheresql: pgp.as.format("where place_print_id = $1", place_id),
       });
 
+      // añadir otro de autores pero habría q dividirlo por los q son originales
+      // y los q son reedciones
+
       return {
         place_cats,
-        place_dec,
-        persons,
-        noprintdata,
+        decades,
+        authors: authors[0].total,
+        noprintdata: noprintdata[0],
         totalFormats,
       };
     })
