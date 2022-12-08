@@ -23,6 +23,8 @@ username = process.env.PG_USER;
 password = process.env.PG_PASSWORD;
 pgport = process.env.PGPORT;
 
+// pgp.pg.types.setTypeParser(20, BigInt); // Type Id 20 = BIGINT | BIGSERIAL
+
 const db = pgp(
   `postgres://${username}:${password}@localhost:${pgport}/dominicos`
 );

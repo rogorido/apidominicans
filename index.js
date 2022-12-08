@@ -51,8 +51,13 @@ app.get("/", (req, res) => {
 
 app.get("/statistics/general/", dbfunctions.stats.mainPage);
 
-app.get("/category/general/", dbfunctions.cats.summaryCat);
+app.get("/categories/", dbfunctions.cats.CategoriesAll);
+app.get("/categories/:id", dbfunctions.cats.CategoryByID);
+
 app.get("/places/", dbfunctions.places.places);
+app.get("/places/:id", dbfunctions.places.places);
+app.get("/authors/", dbfunctions.authors.AuthorsAll);
+app.get("/authors/:id", dbfunctions.authors.AuthorById);
 
 // console.log(process.env.npm_package_version);
 
