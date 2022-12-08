@@ -17,6 +17,7 @@ const sqlWorksWithoutThemes = readSQL(
 const sqlFormats = readSQL("../sql/statistics/stats_formats.sql");
 
 // category
+const sqlCategoriesAll = readSQL("../sql/category/categoriesall.sql");
 const sqlWorksCategory = readSQL("../sql/category/totalworks.sql");
 const sqlAuthorsCategory = readSQL("../sql/category/totalauthors.sql");
 const sqlPlacesCategory = readSQL("../sql/category/totalplaces.sql");
@@ -32,11 +33,17 @@ const sqlPlacesbyIdCategories = readSQL("../sql/places/placeid_categories.sql");
 const sqlPlacesbyIdDecades = readSQL("../sql/places/placeid_decades.sql");
 const sqlPlacesbyIdOtherData = readSQL("../sql/places/placeid_otherdata.sql");
 
+// authors
+const sqlAuthorsAll = readSQL("../sql/authors/authorsall.sql");
+const sqlAuthorsById = readSQL("../sql/authors/authorbyid.sql");
+const sqlAuthorsByIdCategories = readSQL("../sql/authors/authorbyidcats.sql");
+
 module.exports = {
   sqlStatisticsLanguages,
   sqlStatisticsMainPage,
   sqlMainPageTotalPlaces,
   sqlWorksWithoutThemes,
+  sqlCategoriesAll,
   sqlWorksCategory,
   sqlAuthorsCategory,
   sqlPlacesCategory,
@@ -48,4 +55,7 @@ module.exports = {
   sqlPlacesbyIdDecades,
   sqlPlacesbyIdOtherData,
   sqlFormats,
+  sqlAuthorsAll,
+  sqlAuthorsById,
+  sqlAuthorsByIdCategories,
 };

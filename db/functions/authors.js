@@ -2,8 +2,10 @@ const { db, pgp } = require("../dbconnect");
 const { FilterSetMinimo } = require("../helpers");
 
 const {
+  sqlAuthorsAll,
+  sqlAuthorsById,
   sqlWorksCategory,
-  sqlAuthorsCategory,
+  sqlAuthorsByIdCategories,
   sqlPlacesCategory,
 } = require("../readsqls");
 
@@ -14,19 +16,31 @@ function getFormattedQuery(sql, filters) {
   return querysql;
 }
 
-function Authors(req, res) {
-  const author = req.query.author;
+async function AuthorsAll(req, res) {
+  try {
+    const totalWorks = await db.many(sqlAuthorsAll);
 
-  let filters = {};
+    res.send(totalWorks);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function AuthorById(req, res) {
+  //  const author = req.query.author;
+  const author_id = req.params.id;
+
+  if (author_id == null) {
+    return;
+  }
 
   db.task("authors", async (t) => {
-    filters.author = author;
-
-    let querysql = getFormattedQuery(sqlWorksCategory, filters);
-    const totalWorks = await t.one(querysql);
+    const persona = await t.one(sqlAuthorsById, author_id);
+    const cats = await t.any(sqlAuthorsByIdCategories, author_id);
 
     return {
-      totalWorks,
+      persona,
+      cats,
     };
   })
     .then((data) => {
@@ -39,5 +53,6 @@ function Authors(req, res) {
 }
 
 module.exports = {
-  Authors,
+  AuthorById,
+  AuthorsAll,
 };
