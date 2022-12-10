@@ -1,3 +1,9 @@
+--- nombre de la ciudad
+
+SELECT place
+FROM places
+WHERE place_id = $1;
+
 --- coordenadas de la ciudad
 
 SELECT longitude, latitude

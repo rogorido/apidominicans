@@ -20,7 +20,7 @@ async function places(req, res) {
       const place_cats = await t.any(sqlPlacesbyIdCategories, place_id);
       const decades = await t.any(sqlPlacesbyIdDecades, place_id);
 
-      const [coords, authors, noprintdata] = await t.multi(
+      const [place_name, coords, authors, noprintdata] = await t.multi(
         sqlPlacesbyIdOtherData,
         place_id
       );
@@ -33,6 +33,7 @@ async function places(req, res) {
       // y los q son reedciones
 
       return {
+        place_name: place_name[0].place,
         place_cats,
         decades,
         coords,
