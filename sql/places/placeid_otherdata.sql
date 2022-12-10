@@ -1,3 +1,9 @@
+--- coordenadas de la ciudad
+
+SELECT longitude, latitude
+FROM places
+WHERE place_id = $1;
+
 --- cuántos autores han publicado ahí
 
 SELECT COUNT(DISTINCT person_id)::integer AS total

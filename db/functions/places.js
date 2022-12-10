@@ -20,7 +20,7 @@ async function places(req, res) {
       const place_cats = await t.any(sqlPlacesbyIdCategories, place_id);
       const decades = await t.any(sqlPlacesbyIdDecades, place_id);
 
-      const [authors, noprintdata] = await t.multi(
+      const [coords, authors, noprintdata] = await t.multi(
         sqlPlacesbyIdOtherData,
         place_id
       );
@@ -35,6 +35,7 @@ async function places(req, res) {
       return {
         place_cats,
         decades,
+        coords,
         authors: authors[0].total,
         noprintdata: noprintdata[0],
         totalFormats,
