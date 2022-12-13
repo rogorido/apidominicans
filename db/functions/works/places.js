@@ -1,4 +1,4 @@
-const { db, pgp } = require("../dbconnect");
+const { db, pgp } = require("../../dbconnect");
 
 const {
   sqlPlacesTotal,
@@ -6,7 +6,7 @@ const {
   sqlPlacesbyIdDecades,
   sqlPlacesbyIdOtherData,
   sqlFormats,
-} = require("../readsqls");
+} = require("../../readsqls");
 
 async function places(req, res) {
   if (req.params.id == undefined) {

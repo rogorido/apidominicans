@@ -1,5 +1,5 @@
-const { db, pgp } = require("../dbconnect");
-const { FilterSetMinimo } = require("../helpers");
+const { db, pgp } = require("../../dbconnect");
+const { FilterSetMinimo } = require("../../helpers");
 
 const {
   sqlCategoriesAll,
@@ -9,7 +9,7 @@ const {
   sqlCategoryDecades,
   sqlCategoryRelated,
   sqlCategoryConcreteAuthors,
-} = require("../readsqls");
+} = require("../../readsqls");
 
 // creamos una string de una query con los filtros q se le pasa
 function getFormattedQuery(sql, filters) {

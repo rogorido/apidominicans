@@ -49,15 +49,15 @@ app.get("/", (req, res) => {
   res.send({ version: process.env.npm_package_version });
 });
 
-app.get("/statistics/general/", dbfunctions.stats.mainPage);
+app.get("/statistics/general/", dbfunctions.works.stats.mainPage);
 
-app.get("/categories/", dbfunctions.cats.CategoriesAll);
-app.get("/categories/:id", dbfunctions.cats.CategoryByID);
+app.get("/categories/", dbfunctions.works.cats.CategoriesAll);
+app.get("/categories/:id", dbfunctions.works.cats.CategoryByID);
 
-app.get("/places/", dbfunctions.places.places);
-app.get("/places/:id", dbfunctions.places.places);
-app.get("/authors/", dbfunctions.authors.AuthorsAll);
-app.get("/authors/:id", dbfunctions.authors.AuthorById);
+app.get("/places/", dbfunctions.works.places.places);
+app.get("/places/:id", dbfunctions.works.places.places);
+app.get("/authors/", dbfunctions.works.authors.AuthorsAll);
+app.get("/authors/:id", dbfunctions.works.authors.AuthorById);
 
 // console.log(process.env.npm_package_version);
 

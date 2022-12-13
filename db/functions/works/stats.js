@@ -1,4 +1,4 @@
-const { db, pgp } = require("../dbconnect");
+const { db, pgp } = require("../../dbconnect");
 
 const {
   sqlStatisticsMainPage,
@@ -6,7 +6,7 @@ const {
   sqlWorksWithoutThemes,
   sqlFormats,
   sqlMainPageTotalPlaces,
-} = require("../readsqls");
+} = require("../../readsqls");
 
 function mainPage(req, res) {
   db.task("stats-general", async (t) => {
