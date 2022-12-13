@@ -1,7 +1,7 @@
 {
   "name": "apiworks",
-  "version": "0.7.2",
-  "description": "API for analyzing the works of dominican friars.",
+  "version": "0.7.3",
+  "description": "API for analyzing the Dominican Order in the early modern period.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
