@@ -13,4 +13,5 @@ module.exports = {
   works: require("./worksfunctions"),
   houses: require("./housesfunctions"),
   bishops: require("./bishopsfunctions"),
+  resolutions: require("./resolutionsfunctions"),
 };
