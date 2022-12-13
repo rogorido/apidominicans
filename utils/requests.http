@@ -1,33 +1,36 @@
 # get statisticslanguages
-GET http://localhost:8009/statistics/general/
+GET http://localhost:8009/works/statistics/general/
 
 # get cateogorías
-GET http://localhost:8009/categories/
+GET http://localhost:8009/works/categories/
 
 # get summary de cateogoría 
-GET http://localhost:8009/categories/309
+GET http://localhost:8009/works/categories/309
 
 # get summary de cateogoría con error 
-GET http://localhost:8009/categories/x
+GET http://localhost:8009/works/categories/x
 
 # get summary de cateogoría con error 
-GET http://localhost:8009/authors/
+GET http://localhost:8009/works/authors/
 
 # get summary de cateogoría con error 
-GET http://localhost:8009/places/
+GET http://localhost:8009/works/places/
 
 # get roma 
-GET http://localhost:8009/places/?place_id=3
+GET http://localhost:8009/works/places/?place_id=3
 
 # get roma 
-GET http://localhost:8009/places/3
+GET http://localhost:8009/works/places/3
 
 # get paris
-GET http://localhost:8009/places/2
+GET http://localhost:8009/works/places/2
 
 # get roma 
-GET http://localhost:8009/authors/
+GET http://localhost:8009/works/authors/
 
 # get author 
-GET http://localhost:8009/authors/1517
+GET http://localhost:8009/works/authors/1517
+
+# get houses
+GET http://localhost:8009/houses/houses/
 

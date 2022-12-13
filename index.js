@@ -30,17 +30,22 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-// app.use(
-//   cors({
-//     origin: [
-//       "https://www.georeligion.org",
-//       "https://dbg.georeligion.org",
-//       "https://open.georeligion.org",
-//       "http://localhost:*",
-//       "http://192.168.1.10:8080",
-//     ],
-//   })
-// );
+app.use(
+  cors({
+    origin: [
+      "https://www.georeligion.org",
+      "https://dbg.georeligion.org",
+      "https://beta.georeligion.org",
+      "https://dominicans.georeligion.org",
+      "http://localhost:8000",
+      "http://localhost:3000",
+      "http://localhost:9000",
+      "http://localhost:8080",
+      "http://localhost:8081",
+      "http://192.168.1.10:8080",
+    ],
+  })
+);
 
 app.use(cors());
 
@@ -49,17 +54,25 @@ app.get("/", (req, res) => {
   res.send({ version: process.env.npm_package_version });
 });
 
-app.get("/statistics/general/", dbfunctions.works.stats.mainPage);
+// WORKS
+app.get("/works/statistics/general/", dbfunctions.works.stats.mainPage);
 
-app.get("/categories/", dbfunctions.works.cats.CategoriesAll);
-app.get("/categories/:id", dbfunctions.works.cats.CategoryByID);
+app.get("/works/categories/", dbfunctions.works.cats.CategoriesAll);
+app.get("/works/categories/:id", dbfunctions.works.cats.CategoryByID);
 
-app.get("/places/", dbfunctions.works.places.places);
-app.get("/places/:id", dbfunctions.works.places.places);
-app.get("/authors/", dbfunctions.works.authors.AuthorsAll);
-app.get("/authors/:id", dbfunctions.works.authors.AuthorById);
+app.get("/works/places/", dbfunctions.works.places.places);
+app.get("/works/places/:id", dbfunctions.works.places.places);
+app.get("/works/authors/", dbfunctions.works.authors.AuthorsAll);
+app.get("/works/authors/:id", dbfunctions.works.authors.AuthorById);
 
-// console.log(process.env.npm_package_version);
+// HOUSES
+app.get(
+  "/houses/statistics/general/",
+  dbfunctions.houses.houses.getGeneralData
+);
+app.get("/houses/houses/", dbfunctions.houses.houses.getHouses);
+// para comboboxes y demás
+app.get("/houses/provinces/", dbfunctions.houses.houses.getProvinces);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:${process.env.PORT}/`);
