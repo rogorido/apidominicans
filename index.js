@@ -34,8 +34,6 @@ app.use(
   cors({
     origin: [
       "https://www.georeligion.org",
-      "https://dbg.georeligion.org",
-      "https://beta.georeligion.org",
       "https://dominicans.georeligion.org",
       "http://localhost:8000",
       "http://localhost:3000",
