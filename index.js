@@ -57,13 +57,8 @@ const works = require("./routes/works");
 app.use("/works", works);
 
 // HOUSES
-app.get(
-  "/houses/statistics/general/",
-  dbfunctions.houses.houses.getGeneralData
-);
-app.get("/houses/houses/", dbfunctions.houses.houses.getHouses);
-// para comboboxes y demás
-app.get("/houses/provinces/", dbfunctions.houses.houses.getProvinces);
+const houses = require("./routes/houses");
+app.use("/houses", houses);
 
 // BISHOPS
 app.get("/bishops/statistics/general/", dbfunctions.bishops.edm.getGeneralData);
