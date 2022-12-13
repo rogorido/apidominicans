@@ -34,3 +34,6 @@ GET http://localhost:8009/works/authors/1517
 # get houses
 GET http://localhost:8009/houses/houses/
 
+
+# get orders with bishops
+GET http://localhost:8001/bishops/orders/?bishops=true
