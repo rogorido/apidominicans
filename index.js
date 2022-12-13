@@ -47,7 +47,7 @@ app.use(
   })
 );
 
-app.use(cors());
+// app.use(cors());
 
 // devolvemos la versión de la API
 app.get("/", (req, res) => {
