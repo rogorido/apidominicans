@@ -53,15 +53,8 @@ app.get("/", (req, res) => {
 });
 
 // WORKS
-app.get("/works/statistics/general/", dbfunctions.works.stats.mainPage);
-
-app.get("/works/categories/", dbfunctions.works.cats.CategoriesAll);
-app.get("/works/categories/:id", dbfunctions.works.cats.CategoryByID);
-
-app.get("/works/places/", dbfunctions.works.places.places);
-app.get("/works/places/:id", dbfunctions.works.places.places);
-app.get("/works/authors/", dbfunctions.works.authors.AuthorsAll);
-app.get("/works/authors/:id", dbfunctions.works.authors.AuthorById);
+const works = require("./routes/works");
+app.use("/works", works);
 
 // HOUSES
 app.get(
