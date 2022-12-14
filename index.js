@@ -43,9 +43,7 @@ app.use(
   })
 );
 
-// app.use(cors());
-
-// devolvemos la versión de la API
+// send API version
 app.get("/", (req, res) => {
   res.send({ version: process.env.npm_package_version });
 });
@@ -54,11 +52,13 @@ app.get("/", (req, res) => {
 const works = require("./routes/works");
 const houses = require("./routes/houses");
 const bishops = require("./routes/bishops");
+const resolutions = require("./routes/resolutions");
 
 // applying routes
 app.use("/works", works);
 app.use("/houses", houses);
 app.use("/bishops", bishops);
+app.use("/chapters", resolutions);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:${process.env.PORT}/`);

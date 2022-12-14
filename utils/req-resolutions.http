@@ -1,0 +1,12 @@
+# get orders with bishops
+GET http://localhost:8009/chapters/generaldata/
+
+# get list of dioceses 
+GET http://localhost:8009/bishops/dioceses/
+
+# get Aleria
+GET http://localhost:8009/bishops/dioceses/?diocese=36
+
+
+
+

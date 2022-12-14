@@ -3,5 +3,5 @@
 
 module.exports = {
   // resolutions, actually we could make this more simple...
-  edm: require("./functions/bishops/edm"),
+  chaps: require("./functions/resolutions/dbfunctions1570"),
 };

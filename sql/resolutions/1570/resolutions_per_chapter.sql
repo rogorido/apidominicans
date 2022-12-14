@@ -1,4 +1,13 @@
+--- total of resolutions
+SELECT COUNT(*) as total FROM resolutions;
 
+--- total of themes
+SELECT COUNT(*) as total FROM resolutions_themes;
+
+--- total of details
+SELECT COUNT(*) as total FROM resolutions_details;
+
+--- resolutions per chapter
 SELECT ch.general_name,
        EXTRACT(YEAR FROM date_beginning) AS yearchapter,
        COUNT(r.resolution_id) AS total 
