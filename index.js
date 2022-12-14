@@ -50,16 +50,14 @@ app.get("/", (req, res) => {
   res.send({ version: process.env.npm_package_version });
 });
 
-// WORKS
+// getting routes
 const works = require("./routes/works");
-app.use("/works", works);
-
-// HOUSES
 const houses = require("./routes/houses");
-app.use("/houses", houses);
-
-// BISHOPS
 const bishops = require("./routes/bishops");
+
+// applying routes
+app.use("/works", works);
+app.use("/houses", houses);
 app.use("/bishops", bishops);
 
 app.listen(process.env.PORT, () => {
