@@ -1,7 +1,15 @@
 # get orders with bishops
 GET http://localhost:8009/chapters/generaldata/
 
+# get orders with bishops
+GET http://localhost:8009/chapters/approbations/general/
 
+# get orders with bishops
+GET http://localhost:8009/chapters/houses/origin/
 
+# get orders with bishops
+GET http://localhost:8009/chapters/sufragios/stats/
 
+# get orders with bishops
+GET http://localhost:8009/chapters/penas/
 
