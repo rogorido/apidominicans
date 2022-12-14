@@ -8,8 +8,6 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-const dbfunctions = require("./db/dbgeneral");
-
 const app = express();
 app.use(morgan("tiny"));
 
@@ -61,23 +59,8 @@ const houses = require("./routes/houses");
 app.use("/houses", houses);
 
 // BISHOPS
-app.get("/bishops/statistics/general/", dbfunctions.bishops.edm.getGeneralData);
-app.get("/bishops/prueba/", dbfunctions.bishops.edm.getBishopsPerCentury);
-app.get("/bishops/dioceses/", dbfunctions.bishops.edm.getDioceses);
-app.get(
-  "/bishops/dioceses/clusters/",
-  dbfunctions.bishops.edm.getDiocesesClusters
-);
-
-app.get("/bishops/orders/", dbfunctions.bishops.edm.getOrders);
-app.get("/bishops/orders/presence/", dbfunctions.bishops.edm.getOrdersPresence);
-app.get("/bishops/orders/absence/", dbfunctions.bishops.edm.getOrdersAbsence);
-app.get(
-  "/bishops/orders/temporalseries/",
-  dbfunctions.bishops.edm.getOrdersTemporalSeries
-);
-
-app.get("/bishops/positions/", dbfunctions.bishops.edm.getBishopsPositions);
+const bishops = require("./routes/bishops");
+app.use("/bishops", bishops);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:${process.env.PORT}/`);
