@@ -61,17 +61,17 @@ async function getChaptersPerDecade(req, res) {
 }
 
 async function getChaptersPerPlaces(req, res) {
-  const rowList = await db.query(sqlChaptersPerPlaces);
+  const rowList = await db.many(sqlChaptersPerPlaces);
   res.send(rowList);
 }
 
 async function getThemesList(req, res) {
-  const rowList = await db.query(sqlThemesList);
+  const rowList = await db.many(sqlThemesList);
   res.send(rowList);
 }
 
 async function getThemesStats(req, res) {
-  const rowList = await db.query(sqlThemesStats);
+  const rowList = await db.many(sqlResolutionsThemesStats);
   res.send(rowList);
 }
 
@@ -84,58 +84,58 @@ async function getThemesDetails(req, res) {
   //   sqlFindResolutionsWithProvinces,
   //   new FilterSetProvinces(queryparams)
   // );
-  const rowList = await db.query(sqlThemesDetails, theme);
+  const rowList = await db.any(sqlResolutionsThemesDetails, theme);
 
   res.send(rowList);
 }
 
 async function getCapGensStats(req, res) {
-  const rowList = await db.query(sqlCapGensStats);
+  const rowList = await db.many(sqlCapGensStats);
   res.send(rowList);
 }
 
 async function getResolutionsTypesStats(req, res) {
-  const rowList = await db.query(sqlResolutionsTypesStats);
+  const rowList = await db.many(sqlResolutionsTypesStats);
   res.send(rowList);
 }
 
 async function getResolutionsAddData(req, res) {
-  const rowList = await db.query(sqlResolutionsAddData);
+  const rowList = await db.any(sqlResolutionsAddData);
   res.send(rowList);
 }
 
 async function getHousesOriginAffiliation(req, res) {
-  const rowList = await db.query(sqlHousesOriginAffiliation);
+  const rowList = await db.many(sqlHousesOriginAffiliation);
   res.send(rowList);
 }
 
 async function getHousesDestinationAffiliation(req, res) {
-  const rowList = await db.query(sqlHousesDestinationAffiliation);
+  const rowList = await db.many(sqlHousesDestinationAffiliation);
   res.send(rowList);
 }
 
 async function getResolutionsLookAgain(req, res) {
-  const rowList = await db.query(sqlResolutionsLookAgain);
+  const rowList = await db.any(sqlResolutionsLookAgain);
   res.send(rowList);
 }
 
 async function getSufragiosStats(req, res) {
-  const rowList = await db.query(sqlSufragiosStats);
+  const rowList = await db.any(sqlSufragiosStats);
   res.send(rowList);
 }
 
 async function getLicencesStats(req, res) {
-  const rowList = await db.query(sqlLicencesStats);
+  const rowList = await db.many(sqlLicencesStats);
   res.send(rowList);
 }
 
 async function getProhibitions(req, res) {
-  const rowList = await db.query(sqlProhibitions);
+  const rowList = await db.many(sqlProhibitions);
   res.send(rowList);
 }
 
 async function getProvinces(req, res) {
-  const rowList = await db.query(sqlProvinces);
+  const rowList = await db.many(sqlProvinces);
   res.send(rowList);
 }
 
@@ -175,7 +175,7 @@ async function getResolutionsWithFilters(req, res) {
     new FilterSetGeneral(queryparams)
   );
   // console.log(querysql);
-  rowList = await db.query(querysql);
+  rowList = await db.any(querysql);
 
   res.send(rowList);
 }
@@ -203,38 +203,38 @@ async function getResolutionsWithProvinces(req, res) {
     sqlFindResolutionsWithProvinces,
     new FilterSetProvinces(queryparams)
   );
-  rowList = await db.query(querysql);
+  rowList = await db.any(querysql);
 
   res.send(rowList);
 }
 
 async function getAffiliations(req, res) {
-  const origins = await db.query(sqlAffiliationsOrigins);
-  const destinations = await db.query(sqlAffiliationsDestinations);
+  const origins = await db.many(sqlAffiliationsOrigins);
+  const destinations = await db.many(sqlAffiliationsDestinations);
 
-  res.send({ origins: origins, destinations: destinations });
+  res.send({ origins, destinations });
 }
 
 async function getPenasStats(req, res) {
-  const penas = await db.query(sqlPenasStats);
+  const penas = await db.many(sqlPenasStats);
   res.send(penas);
 }
 
 async function getProvincesStats(req, res) {
-  const rowList = await db.query(sqlProvincesStats);
+  const rowList = await db.many(sqlProvincesStats);
   res.send(rowList);
 }
 
 async function getRetroStats(req, res) {
-  const rowList = await db.query(sqlRetroStats);
+  const rowList = await db.many(sqlRetroStats);
   res.send(rowList);
 }
 
 async function getAprobationsStats(req, res) {
-  const rowListGeneral = await db.query(sqlAprobacionesGeneral);
-  const rowListTypes = await db.query(sqlAprobacionesTipos);
-  const rowListProvinces = await db.query(sqlAprobacionesProvincias);
-  const rowListProvincesNoGenPred = await db.query(
+  const rowListGeneral = await db.many(sqlAprobacionesGeneral);
+  const rowListTypes = await db.many(sqlAprobacionesTipos);
+  const rowListProvinces = await db.many(sqlAprobacionesProvincias);
+  const rowListProvincesNoGenPred = await db.many(
     sqlAprobacionesProvinciasSinPredGens
   );
   res.send({
@@ -247,7 +247,7 @@ async function getAprobationsStats(req, res) {
 
 async function getAprobationsProvincesDetails(req, res) {
   const province = req.query.province;
-  const rowListDetails = await db.query(
+  const rowListDetails = await db.any(
     sqlAprobacionesProvinciasDetails,
     province
   );
@@ -257,8 +257,8 @@ async function getAprobationsProvincesDetails(req, res) {
 
 async function getProvincesDetails(req, res) {
   const province = req.query.province;
-  const rowListDetails = await db.query(sqlProvincesDetails, province);
-  const rowListDetailsThemes = await db.query(
+  const rowListDetails = await db.any(sqlProvincesDetails, province);
+  const rowListDetailsThemes = await db.any(
     sqlProvincesDetailsThemes,
     province
   );
@@ -267,7 +267,7 @@ async function getProvincesDetails(req, res) {
 }
 
 async function getThemesOrdinationes(req, res) {
-  const rowList = await db.query(sqlThemesOrdinationes);
+  const rowList = await db.many(sqlThemesOrdinationes);
 
   res.send(rowList);
 }
