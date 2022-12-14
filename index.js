@@ -9,6 +9,9 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
+
+// https://expressjs.com/en/resources/middleware/morgan.html
+//app.use(morgan("common"));
 app.use(morgan("tiny"));
 
 app.use(bodyParser.json());
