@@ -1,6 +1,6 @@
 {
   "name": "apiworks",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "API for analyzing the Dominican Order in the early modern period.",
   "main": "index.js",
   "scripts": {
