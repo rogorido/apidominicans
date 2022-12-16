@@ -1,6 +1,6 @@
 // esto en principio es lo mismo que el otro pero todo está filtrado
 // para que sea solo ab 1570.
-const { db } = require("../../dbconnect");
+const { db, pgp } = require("../../dbconnect");
 const { FilterSetGeneral, FilterSetProvinces } = require("../../helpers");
 
 // Es necesario crearlo aquí globalmente y no en la función concreta
@@ -40,39 +40,64 @@ const {
 } = require("../../readsqls-resolutions");
 
 async function getGeneralData(req, res) {
-  const [
-    nResolutions,
-    nResolutionsThemes,
-    nResolutionsDetails,
-    nResolutionsPerChapter,
-  ] = await db.multi(sqlResolutionsGeneralData);
+  try {
+    const [
+      nResolutions,
+      nResolutionsThemes,
+      nResolutionsDetails,
+      nResolutionsPerChapter,
+    ] = await db.multi(sqlResolutionsGeneralData);
 
-  res.send({
-    nResolutionsPerChapter,
-    nResolutions,
-    nResolutionsThemes,
-    nResolutionsDetails,
-  });
+    res.send({
+      nResolutionsPerChapter,
+      nResolutions,
+      nResolutionsThemes,
+      nResolutionsDetails,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getChaptersPerDecade(req, res) {
-  const rowList = await db.query(sqlChaptersPerDecade);
-  res.send(rowList);
+  try {
+    const rowList = await db.query(sqlChaptersPerDecade);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getChaptersPerPlaces(req, res) {
-  const rowList = await db.many(sqlChaptersPerPlaces);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlChaptersPerPlaces);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getThemesList(req, res) {
-  const rowList = await db.many(sqlThemesList);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlThemesList);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getThemesStats(req, res) {
-  const rowList = await db.many(sqlResolutionsThemesStats);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlResolutionsThemesStats);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getThemesDetails(req, res) {
@@ -84,64 +109,124 @@ async function getThemesDetails(req, res) {
   //   sqlFindResolutionsWithProvinces,
   //   new FilterSetProvinces(queryparams)
   // );
-  const rowList = await db.any(sqlResolutionsThemesDetails, theme);
-
-  res.send(rowList);
+  try {
+    const rowList = await db.any(sqlResolutionsThemesDetails, theme);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getCapGensStats(req, res) {
-  const rowList = await db.many(sqlCapGensStats);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlCapGensStats);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getResolutionsTypesStats(req, res) {
-  const rowList = await db.many(sqlResolutionsTypesStats);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlResolutionsTypesStats);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getResolutionsAddData(req, res) {
-  const rowList = await db.any(sqlResolutionsAddData);
-  res.send(rowList);
+  try {
+    const rowList = await db.any(sqlResolutionsAddData);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getHousesOriginAffiliation(req, res) {
-  const rowList = await db.many(sqlHousesOriginAffiliation);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlHousesOriginAffiliation);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getHousesDestinationAffiliation(req, res) {
-  const rowList = await db.many(sqlHousesDestinationAffiliation);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlHousesDestinationAffiliation);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getResolutionsLookAgain(req, res) {
-  const rowList = await db.any(sqlResolutionsLookAgain);
-  res.send(rowList);
+  try {
+    const rowList = await db.any(sqlResolutionsLookAgain);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getSufragiosStats(req, res) {
-  const rowList = await db.any(sqlSufragiosStats);
-  res.send(rowList);
+  try {
+    const rowList = await db.any(sqlSufragiosStats);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getLicencesStats(req, res) {
-  const rowList = await db.many(sqlLicencesStats);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlLicencesStats);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getProhibitions(req, res) {
-  const rowList = await db.many(sqlProhibitions);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlProhibitions);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getProvinces(req, res) {
-  const rowList = await db.many(sqlProvinces);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlProvinces);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getResolutionsWithFilters(req, res) {
   let rowList = [];
   const queryparams = req.query;
+
+  // are there any params?
+  if (Object.keys(queryparams).length === 0) {
+    console.log("vacio");
+    return;
+  }
 
   console.log("los parametros antes de manipular son", queryparams);
 
@@ -168,22 +253,34 @@ async function getResolutionsWithFilters(req, res) {
   }
 
   console.log("los parametros son", queryparams);
-  // formateamos el SQL del file con lo que nos devuelve
-  // la clase FilterSet de todos los parámetros de la query
-  var querysql = pgp.as.format(
-    sqlFindResolutionsWithFilters,
-    new FilterSetGeneral(queryparams)
-  );
-  // console.log(querysql);
-  rowList = await db.any(querysql);
 
-  res.send(rowList);
+  try {
+    // formateamos el SQL del file con lo que nos devuelve
+    // la clase FilterSet de todos los parámetros de la query
+    var querysql = pgp.as.format(
+      sqlFindResolutionsWithFilters,
+      new FilterSetGeneral(queryparams)
+    );
+    // console.log(querysql);
+    rowList = await db.any(querysql);
+
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 // rtt esto repite mucha funcionalidad de lo anterior...
 async function getResolutionsWithProvinces(req, res) {
   let rowList = [];
   const queryparams = req.query;
+
+  // are there any params?
+  if (Object.keys(queryparams).length === 0) {
+    console.log("vacio");
+    return;
+  }
 
   // necesitamos convertir lo de themes en un array en el caso de q
   // no lo sea, que es cuando solo viene uno
@@ -197,79 +294,129 @@ async function getResolutionsWithProvinces(req, res) {
 
   let j = new FilterSetProvinces(queryparams);
   console.log(j);
-  // formateamos el SQL del file con lo que nos devuelve
-  // la clase FilterSet de todos los parámetros de la query
-  var querysql = pgp.as.format(
-    sqlFindResolutionsWithProvinces,
-    new FilterSetProvinces(queryparams)
-  );
-  rowList = await db.any(querysql);
 
-  res.send(rowList);
+  try {
+    // formateamos el SQL del file con lo que nos devuelve
+    // la clase FilterSet de todos los parámetros de la query
+    var querysql = pgp.as.format(
+      sqlFindResolutionsWithProvinces,
+      new FilterSetProvinces(queryparams)
+    );
+    rowList = await db.any(querysql);
+
+    res.send(rowList);
+  } catch (err) {
+    res.status(400).send(err);
+  }
 }
 
 async function getAffiliations(req, res) {
-  const origins = await db.many(sqlAffiliationsOrigins);
-  const destinations = await db.many(sqlAffiliationsDestinations);
+  try {
+    const origins = await db.many(sqlAffiliationsOrigins);
+    const destinations = await db.many(sqlAffiliationsDestinations);
 
-  res.send({ origins, destinations });
+    res.send({ origins, destinations });
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getPenasStats(req, res) {
-  const penas = await db.many(sqlPenasStats);
-  res.send(penas);
+  try {
+    const penas = await db.many(sqlPenasStats);
+    res.send(penas);
+  } catch (err) {
+    res.status(400).send(err);
+  }
 }
 
 async function getProvincesStats(req, res) {
-  const rowList = await db.many(sqlProvincesStats);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlProvincesStats);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 async function getRetroStats(req, res) {
-  const rowList = await db.many(sqlRetroStats);
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlRetroStats);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
-async function getAprobationsStats(req, res) {
-  const rowListGeneral = await db.many(sqlAprobacionesGeneral);
-  const rowListTypes = await db.many(sqlAprobacionesTipos);
-  const rowListProvinces = await db.many(sqlAprobacionesProvincias);
-  const rowListProvincesNoGenPred = await db.many(
-    sqlAprobacionesProvinciasSinPredGens
-  );
-  res.send({
-    general: rowListGeneral,
-    tipos: rowListTypes,
-    provinces: rowListProvinces,
-    provincesnogenpred: rowListProvincesNoGenPred,
-  });
+function getAprobationsStats(req, res) {
+  db.task("AprobationsStats", async (t) => {
+    const rowListGeneral = await t.many(sqlAprobacionesGeneral);
+    const rowListTypes = await t.many(sqlAprobacionesTipos);
+    const rowListProvinces = await t.many(sqlAprobacionesProvincias);
+    const rowListProvincesNoGenPred = await t.many(
+      sqlAprobacionesProvinciasSinPredGens
+    );
+    return {
+      general: rowListGeneral,
+      tipos: rowListTypes,
+      provinces: rowListProvinces,
+      provincesnogenpred: rowListProvincesNoGenPred,
+    };
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 async function getAprobationsProvincesDetails(req, res) {
   const province = req.query.province;
-  const rowListDetails = await db.any(
-    sqlAprobacionesProvinciasDetails,
-    province
-  );
 
-  res.send(rowListDetails);
+  try {
+    const rowListDetails = await db.any(
+      sqlAprobacionesProvinciasDetails,
+      province
+    );
+
+    res.send(rowListDetails);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
-async function getProvincesDetails(req, res) {
+function getProvincesDetails(req, res) {
   const province = req.query.province;
-  const rowListDetails = await db.any(sqlProvincesDetails, province);
-  const rowListDetailsThemes = await db.any(
-    sqlProvincesDetailsThemes,
-    province
-  );
 
-  res.send({ details: rowListDetails, themes: rowListDetailsThemes });
+  db.task("ProvinceDetails", async (t) => {
+    const rowListDetails = await t.any(sqlProvincesDetails, province);
+    const rowListDetailsThemes = await t.any(
+      sqlProvincesDetailsThemes,
+      province
+    );
+    return { details: rowListDetails, themes: rowListDetailsThemes };
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 async function getThemesOrdinationes(req, res) {
-  const rowList = await db.many(sqlThemesOrdinationes);
-
-  res.send(rowList);
+  try {
+    const rowList = await db.many(sqlThemesOrdinationes);
+    res.send(rowList);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 module.exports = {

@@ -35,7 +35,6 @@ app.use(limiter);
 app.use(
   cors({
     origin: [
-      "https://www.georeligion.org",
       "https://dominicans.georeligion.org",
       "http://localhost:8000",
       "http://localhost:3000",
@@ -46,6 +45,8 @@ app.use(
     ],
   })
 );
+
+// app.use(cors({ origin: "http://localhost:8000" }));
 
 // send API version
 app.get("/", (req, res) => {

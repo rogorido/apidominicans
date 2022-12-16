@@ -10,9 +10,13 @@ const {
 
 async function places(req, res) {
   if (req.params.id == undefined) {
-    const places = await db.many(sqlPlacesTotal);
-
-    res.send(places);
+    try {
+      const places = await db.many(sqlPlacesTotal);
+      res.send(places);
+    } catch (err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
   } else {
     const place_id = req.params.id;
 

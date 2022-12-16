@@ -1,15 +1,36 @@
 # get orders with bishops
-GET http://localhost:8009/chapters/generaldata/
+GET http://localhost:8001/chapters/generaldata/
 
 # get orders with bishops
-GET http://localhost:8009/chapters/approbations/general/
+GET http://localhost:8001/chapters/approbations/general/
 
 # get orders with bishops
-GET http://localhost:8009/chapters/houses/origin/
+GET http://localhost:8001/chapters/houses/origin/
 
 # get orders with bishops
-GET http://localhost:8009/chapters/sufragios/stats/
+GET http://localhost:8001/chapters/sufragios/stats/
 
 # get orders with bishops
-GET http://localhost:8009/chapters/penas/
+GET http://localhost:8001/chapters/penas/
+
+# get orders with bishops
+GET http://localhost:8001/chapters/themes/
+
+# get orders with bishops
+GET http://localhost:8001/chapters/themes/stats/
+
+# get orders with bishops
+GET http://localhost:8001/chapters/resolutions/
+
+# get orders with bishops
+GET http://localhost:8001/chapters/approbations/general/
+
+# get orders with bishops
+GET http://localhost:8001/chapters/themes/ordinationes/
+
+# get orders with bishops
+GET http://localhost:8001/chapters/provinces/details/?province=7
+
+# esto debería dar error pq no tiene número de provincia 
+GET http://localhost:8001/chapters/provinces/details/
 

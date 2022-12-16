@@ -14,14 +14,17 @@ const {
 // creamos una string de una query con los filtros q se le pasa
 function getFormattedQuery(sql, filters) {
   const querysql = pgp.as.format(sql, new FilterSetMinimo(filters));
-
   return querysql;
 }
 
 async function CategoriesAll(req, res) {
-  const categories = await db.many(sqlCategoriesAll);
-
-  res.send(categories);
+  try {
+    const categories = await db.many(sqlCategoriesAll);
+    res.send(categories);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
 }
 
 function CategoryByID(req, res) {

@@ -170,4 +170,4 @@ function readSQL(file) {
   return new pgp.QueryFile(fullPath, { minify: true });
 }
 
-module.exports = { FilterSetMinimo, readSQL };
+module.exports = { FilterSetMinimo, FilterSetGeneral, readSQL };

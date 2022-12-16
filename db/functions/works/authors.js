@@ -1,5 +1,5 @@
-const { db, pgp } = require("../../dbconnect");
-const { FilterSetMinimo } = require("../../helpers");
+const { db } = require("../../dbconnect");
+//const { FilterSetMinimo } = require("../../helpers");
 
 const {
   sqlAuthorsAll,
@@ -10,24 +10,22 @@ const {
 } = require("../../readsqls");
 
 // creamos una string de una query con los filtros q se le pasa
-function getFormattedQuery(sql, filters) {
-  const querysql = pgp.as.format(sql, new FilterSetMinimo(filters));
-
-  return querysql;
-}
+// function getFormattedQuery(sql, filters) {
+//   const querysql = pgp.as.format(sql, new FilterSetMinimo(filters));
+//   return querysql;
+// }
 
 async function AuthorsAll(req, res) {
   try {
     const totalWorks = await db.many(sqlAuthorsAll);
-
     res.send(totalWorks);
   } catch (err) {
     console.log(err);
+    res.status(400).send(err);
   }
 }
 
 function AuthorById(req, res) {
-  //  const author = req.query.author;
   const author_id = req.params.id;
 
   if (author_id == null) {
@@ -44,11 +42,11 @@ function AuthorById(req, res) {
     };
   })
     .then((data) => {
-      //      console.log(data);
       res.send(data);
     })
     .catch((error) => {
       console.log(error);
+      res.status(400).send(error);
     });
 }
 
