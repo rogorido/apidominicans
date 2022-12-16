@@ -5,6 +5,9 @@ const compression = require("compression");
 const rateLimit = require("express-rate-limit");
 const morgan = require("morgan");
 const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
+const homedir = require("os").homedir();
 
 require("dotenv").config();
 
@@ -14,6 +17,17 @@ const app = express();
 app.use(morgan("combined"));
 //app.use(morgan("common"));
 //app.use(morgan("tiny"));
+
+app.use(
+  morgan("combined", {
+    stream: fs.createWriteStream(
+      path.join(homedir, ".config/apidominicans/", "access.log"),
+      {
+        flags: "a",
+      }
+    ),
+  })
+);
 
 app.use(bodyParser.json());
 app.use(
