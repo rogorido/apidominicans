@@ -1,4 +1,7 @@
 const Promise = require("bluebird");
+const fs = require("fs");
+const path = require("path");
+const homedir = require("os").homedir();
 
 // no sé si rtt son ya los q viene por omisión
 // http://bluebirdjs.com/docs/api/promise.config.html
@@ -30,7 +33,18 @@ const db = pgp(
 );
 
 const monitor = require("pg-monitor");
-monitor.attach(initOptions);
+monitor.attach(initOptions, ["query", "error", "task"]);
+
+const pglog = path.join(homedir, ".config/apidominicans/", "pg-errors.log");
+
+// only errors go to the log file
+monitor.setLog((msg, info) => {
+  console.log(info.time.toString());
+  // info.display = false; // suppresses all console output
+  if (info.event === "error") {
+    fs.appendFileSync(pglog, msg);
+  }
+});
 
 module.exports = {
   db,
