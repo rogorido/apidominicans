@@ -37,7 +37,7 @@ const {
   sqlAffiliationsDestinations,
   sqlPenasStats,
   sqlThemesOrdinationes,
-} = require("../../readsqls-resolutions");
+} = require("../../readsqls/readsqls-resolutions");
 
 async function getGeneralData(req, res) {
   try {

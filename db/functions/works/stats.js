@@ -6,7 +6,7 @@ const {
   sqlWorksWithoutThemes,
   sqlFormats,
   sqlMainPageTotalPlaces,
-} = require("../../readsqls");
+} = require("../../readsqls/readsqls");
 
 function mainPage(req, res) {
   db.task("stats-general", async (t) => {

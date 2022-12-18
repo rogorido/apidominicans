@@ -6,7 +6,7 @@ const {
   sqlPlacesbyIdDecades,
   sqlPlacesbyIdOtherData,
   sqlFormats,
-} = require("../../readsqls");
+} = require("../../readsqls/readsqls");
 
 async function places(req, res) {
   if (req.params.id == undefined) {

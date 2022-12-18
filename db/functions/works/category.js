@@ -9,7 +9,7 @@ const {
   sqlCategoryDecades,
   sqlCategoryRelated,
   sqlCategoryConcreteAuthors,
-} = require("../../readsqls");
+} = require("../../readsqls/readsqls");
 
 // creamos una string de una query con los filtros q se le pasa
 function getFormattedQuery(sql, filters) {

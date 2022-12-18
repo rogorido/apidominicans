@@ -1,4 +1,4 @@
-const { readSQL } = require("./helpers");
+const { readSQL } = require("../helpers");
 
 // Es necesario crearlo aquí globalmente y no en la función concreta
 // por no sé cuestión interna...

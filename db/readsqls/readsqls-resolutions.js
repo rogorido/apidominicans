@@ -1,4 +1,4 @@
-const { readSQL } = require("./helpers");
+const { readSQL } = require("../helpers");
 
 // 1570
 const sqlResolutionsGeneralData = readSQL(

@@ -16,7 +16,7 @@ const {
   sqlAbsenceOrdersAgg,
   sqlOrderTemporalSeries,
   sqlPositionsAgg,
-} = require("../../readsqls-bishops");
+} = require("../../readsqls/readsqls-bishops");
 
 async function getGeneralData(req, res) {
   const [sqlDioceses, sqlBishops, sqlBishopsOrders] = await db.multi(

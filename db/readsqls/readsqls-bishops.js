@@ -1,4 +1,4 @@
-const { readSQL } = require("./helpers");
+const { readSQL } = require("../helpers");
 
 const sqlDiocesesList = readSQL("../sql/bishops/dioceseslist.sql");
 

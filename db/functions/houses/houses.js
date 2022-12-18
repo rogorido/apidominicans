@@ -4,7 +4,7 @@ const {
   sqlHousesGeneralData,
   sqlHousesProvinces,
   sqlHousesSocio,
-} = require("../../readsqls");
+} = require("../../readsqls/readsqls");
 
 async function getGeneralData(req, res) {
   try {
