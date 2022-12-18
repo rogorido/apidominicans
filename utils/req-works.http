@@ -1,0 +1,39 @@
+# get statisticslanguages
+GET http://localhost:8001/works/statistics/general/
+
+# get cateogorías
+GET http://localhost:8001/works/categories/
+
+# get summary de cateogoría 
+GET http://localhost:8001/works/categories/309
+
+# get summary de cateogoría con error 
+GET http://localhost:8001/works/categories/x
+
+# get summary de cateogoría con error 
+GET http://localhost:8001/works/authors/
+
+# get summary de cateogoría con error 
+GET http://localhost:8001/works/places/
+
+# get roma 
+GET http://localhost:8001/works/places/?place_id=3
+
+# get roma 
+GET http://localhost:8001/works/places/3
+
+# get paris
+GET http://localhost:8001/works/places/2
+
+# get roma 
+GET http://localhost:8001/works/authors/
+
+# get author 
+GET http://localhost:8001/works/authors/1517
+
+# get houses
+GET http://localhost:8001/houses/houses/
+
+
+# get orders with bishops
+GET http://localhost:8001/bishops/orders/?bishops=true

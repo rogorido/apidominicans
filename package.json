@@ -1,11 +1,11 @@
 {
   "name": "apiworks",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "API for analyzing the Dominican Order in the early modern period.",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon -e js,sql,json index.js"
+    "start": "node main.js",
+    "dev": "nodemon -e js,sql,json main.js"
   },
   "author": "Igor Sosa Mayor <joseleopoldo1792@gmail.com>",
   "license": "ISC",
