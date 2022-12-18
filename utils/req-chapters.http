@@ -1,0 +1,5 @@
+# get statisticslanguages
+GET http://localhost:8001/chapters/capgensperdecade/
+
+# get statisticslanguages
+GET http://localhost:8001/chapters/capgensperplaces/
