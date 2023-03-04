@@ -1,6 +1,6 @@
 {
   "name": "apiworks",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "description": "API for analyzing the Dominican Order in the early modern period.",
   "main": "main.js",
   "scripts": {
@@ -19,11 +19,11 @@
     "express-rate-limit": "^6.7.0",
     "helmet": "^6.0.1",
     "morgan": "^1.10.0",
-    "pg": "^8.8.0",
+    "pg": "^8.9.0",
     "pg-monitor": "^2.0.0",
-    "pg-promise": "^11.0.2"
+    "pg-promise": "^11.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.21"
   }
 }
