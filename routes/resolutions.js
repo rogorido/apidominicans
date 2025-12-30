@@ -9,27 +9,27 @@ router.get("/themes/stats/", dbfunctions.chaps.chaps.getThemesStats);
 router.get("/themes/details/", dbfunctions.chaps.chaps.getThemesDetails);
 router.get(
   "/themes/ordinationes/",
-  dbfunctions.chaps.chaps.getThemesOrdinationes
+  dbfunctions.chaps.chaps.getThemesOrdinationes,
 );
 router.get("/capgens/", dbfunctions.chaps.chaps.getCapGensStats);
 router.get("/capgensperdecade/", dbfunctions.chaps.chaps.getChaptersPerDecade);
 router.get("/capgensperplaces/", dbfunctions.chaps.chaps.getChaptersPerPlaces);
 router.get(
   "/resolutions/stats/",
-  dbfunctions.chaps.chaps.getResolutionsTypesStats
+  dbfunctions.chaps.chaps.getResolutionsTypesStats,
 );
 router.get(
   "/resolutions/lookagain/",
-  dbfunctions.chaps.chaps.getResolutionsLookAgain
+  dbfunctions.chaps.chaps.getResolutionsLookAgain,
 );
 router.get(
   "/resolutions/adddata/",
-  dbfunctions.chaps.chaps.getResolutionsAddData
+  dbfunctions.chaps.chaps.getResolutionsAddData,
 );
 router.get("/resolutions/", dbfunctions.chaps.chaps.getResolutionsWithFilters);
 router.get(
   "/resolutionsperprovince/",
-  dbfunctions.chaps.chaps.getResolutionsWithProvinces
+  dbfunctions.chaps.chaps.getResolutionsWithProvinces,
 );
 router.get("/sufragios/stats/", dbfunctions.chaps.chaps.getSufragiosStats);
 router.get("/penas/", dbfunctions.chaps.chaps.getPenasStats);
@@ -41,21 +41,21 @@ router.get("/stats/retro", dbfunctions.chaps.chaps.getRetroStats);
 
 router.get(
   "/approbations/general/",
-  dbfunctions.chaps.chaps.getAprobationsStats
+  dbfunctions.chaps.chaps.getAprobationsStats,
 );
 router.get(
   "/approbations/",
-  dbfunctions.chaps.chaps.getAprobationsProvincesDetails
+  dbfunctions.chaps.chaps.getAprobationsProvincesDetails,
 );
 
 // para comboboxes y demás
 router.get(
   "/houses/origin/",
-  dbfunctions.chaps.chaps.getHousesOriginAffiliation
+  dbfunctions.chaps.chaps.getHousesOriginAffiliation,
 );
 router.get(
   "/houses/destination/",
-  dbfunctions.chaps.chaps.getHousesDestinationAffiliation
+  dbfunctions.chaps.chaps.getHousesDestinationAffiliation,
 );
 router.get("/licences/stats/", dbfunctions.chaps.chaps.getLicencesStats);
 router.get("/prohibitions/", dbfunctions.chaps.chaps.getProhibitions);
