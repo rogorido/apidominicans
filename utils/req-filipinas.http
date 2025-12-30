@@ -1,0 +1,6 @@
+# get statisticslanguages
+GET http://localhost:8001/general/version
+
+
+
+
