@@ -1,4 +1,4 @@
-const { db } = require("../../db/dbconnect");
+const { db } = require("../db/dbconnect");
 
 async function routes(fastify, options) {
   fastify.get("/version", async (request, reply) => {
@@ -8,20 +8,10 @@ async function routes(fastify, options) {
   fastify.get("/datos", async (request, reply) => {
     try {
       const categories = await db.one("select count(*) from places");
-      return categories;
+      reply.status(200).send(categories);
     } catch (err) {
       console.log(err);
-      return err;
-    }
-  });
-
-  fastify.get("/cojones", async (request, reply) => {
-    try {
-      const categories = await db.many("select * from places limit 5");
-      return categories;
-    } catch (err) {
-      console.log(err);
-      return err;
+      reply.status(404).send(err);
     }
   });
 

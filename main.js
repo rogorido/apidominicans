@@ -28,7 +28,7 @@ fastify.register(require("@fastify/rate-limit"), {
 
 // We declare a route
 fastify.register(require("./src/routes/general"), { prefix: "/general" });
-// fastify.register(require("./src/routes/static"), { prefix: "/static" });
+fastify.register(require("./src/routes/works"), { prefix: "/works" });
 
 fastify.listen({ port: process.env.PORT }, (err) => {
   if (err) {
