@@ -1,8 +1,8 @@
 # get statisticslanguages
-GET http://localhost:8001/works/statistics/general/
+GET http://localhost:8001/works/statistics/general
 
 # get cateogorías
-GET http://localhost:8001/works/categories/
+GET http://localhost:8001/works/categories
 
 # get summary de cateogoría 
 GET http://localhost:8001/works/categories/309
@@ -13,7 +13,10 @@ GET http://localhost:8001/works/categories/x
 # get summary de cateogoría con error 
 GET http://localhost:8001/works/authors/
 
-# get summary de cateogoría con error 
+# get all places
+GET http://localhost:8001/works/places
+
+# get all places: should give an error bcause of last /
 GET http://localhost:8001/works/places/
 
 # get roma 
@@ -30,6 +33,9 @@ GET http://localhost:8001/works/authors/
 
 # get author 
 GET http://localhost:8001/works/authors/1517
+
+# should give an error 500
+GET http://localhost:8001/works/authors/
 
 # get houses
 GET http://localhost:8001/houses/houses/
