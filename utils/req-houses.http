@@ -1,0 +1,5 @@
+# get houses 
+GET http://localhost:8001/houses/statistics/general/
+
+# get houses 
+GET http://localhost:8001/houses/provinces/
