@@ -133,6 +133,7 @@ async function routes(fastify, options) {
     });
   });
 
+  // NOTE: esto funciona.
   fastify.get("/prueba/", async (request, reply) => {
     let rowList = await db.query(sqlBishopsPerCentury);
 
