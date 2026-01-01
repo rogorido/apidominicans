@@ -2,6 +2,16 @@ const { db } = require("../../db/dbconnect");
 
 const sqls = require("../../helpers/readsqls/readsqls-philippines");
 
+async function personsMostInfo(request, reply) {
+  try {
+    const personsMostInfo = await db.query(sqls.sqlPersons);
+    return reply.status(200).send(personsMostInfo);
+  } catch (err) {
+    console.log(err);
+    return reply.status(400).send(err);
+  }
+}
+
 async function personsBirths(request, reply) {
   try {
     const [missionsGeneral] = await db.query(sqls.sqlPersonsBirths);
@@ -50,6 +60,7 @@ async function personsResignations(request, reply) {
 }
 
 module.exports = {
+  personsMostInfo,
   personsBirths,
   personsDeaths,
   personsResignations,
