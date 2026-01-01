@@ -32,6 +32,9 @@ fastify.register(require("./src/routes/works"), { prefix: "/works" });
 fastify.register(require("./src/routes/houses"), { prefix: "/houses" });
 fastify.register(require("./src/routes/resolutions"), { prefix: "/chapters" });
 fastify.register(require("./src/routes/bishops"), { prefix: "/bishops" });
+fastify.register(require("./src/routes/philippines"), {
+  prefix: "/philippines",
+});
 
 fastify.listen({ port: process.env.PORT }, (err) => {
   if (err) {
