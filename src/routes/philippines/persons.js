@@ -12,6 +12,31 @@ async function personsMostInfo(request, reply) {
   }
 }
 
+function personsId(request, reply) {
+  const person_id = request.params.id;
+
+  if (person_id == null || person_id == "") {
+    return reply.status(500).send({ message: "No person_id" });
+  }
+
+  db.task("authorbyid", async (t) => {
+    const personflat = await t.one(sqls.sqlPersonbyId, person_id);
+    const details = await t.any(sqls.sqlPersonbyIdDetails, person_id);
+
+    return {
+      personflat,
+      details,
+    };
+  })
+    .then((data) => {
+      return reply.status(200).send(data);
+    })
+    .catch((error) => {
+      console.log(error);
+      return reply.status(400).send(error);
+    });
+}
+
 async function personsBirths(request, reply) {
   try {
     const [missionsGeneral] = await db.query(sqls.sqlPersonsBirths);
@@ -61,6 +86,7 @@ async function personsResignations(request, reply) {
 
 module.exports = {
   personsMostInfo,
+  personsId,
   personsBirths,
   personsDeaths,
   personsResignations,
