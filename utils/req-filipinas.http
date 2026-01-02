@@ -19,5 +19,6 @@ GET http://localhost:8001/philippines/missions/general/
 # get missions
 GET http://localhost:8001/philippines/others/languages/
 
-
+# get births, deaths...
+GET http://localhost:8001/philippines/persons/birthsdeaths/
 

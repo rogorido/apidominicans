@@ -8,8 +8,9 @@ const sqlKeysUsed = readSQL("../sql/philippines/keys_used.sql");
 // persons
 // TODO: esto de los births es un agregado. el otro es un total!
 const sqlPersons = readSQL("../sql/philippines/persons.sql");
-const sqlPersonsBirths = readSQL("../sql/philippines/persons_births.sql");
-const sqlPersonsDeaths = readSQL("../sql/philippines/persons_deaths.sql");
+const sqlPersonsBirthsDeaths = readSQL(
+  "../sql/philippines/persons_birthsdeaths.sql",
+);
 const sqlPersonsResignations = readSQL("../sql/philippines/persons_quits.sql");
 
 // this query is already avalaible for authors!
@@ -33,8 +34,7 @@ module.exports = {
   sqlPersons,
   sqlPersonbyId,
   sqlPersonbyIdDetails,
-  sqlPersonsBirths,
-  sqlPersonsDeaths,
+  sqlPersonsBirthsDeaths,
   sqlPersonsResignations,
   sqlMissionsGeneral,
   sqlPositions,

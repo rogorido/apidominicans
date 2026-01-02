@@ -37,23 +37,13 @@ function personsId(request, reply) {
     });
 }
 
-async function personsBirths(request, reply) {
+async function personsBirthsDeaths(request, reply) {
   try {
-    const [missionsGeneral] = await db.query(sqls.sqlPersonsBirths);
+    const [births, deaths, deathsplaces] = await db.multi(
+      sqls.sqlPersonsBirthsDeaths,
+    );
     return reply.status(200).send({
-      missionsGeneral,
-    });
-  } catch (err) {
-    console.log(err);
-    return reply.status(400).send(err);
-  }
-}
-
-// All infos!
-async function personsDeaths(request, reply) {
-  try {
-    const [deaths, deathsplaces] = await db.multi(sqls.sqlPersonsDeaths);
-    return reply.status(200).send({
+      births,
       deaths,
       deathsplaces,
     });
@@ -87,7 +77,6 @@ async function personsResignations(request, reply) {
 module.exports = {
   personsMostInfo,
   personsId,
-  personsBirths,
-  personsDeaths,
+  personsBirthsDeaths,
   personsResignations,
 };
