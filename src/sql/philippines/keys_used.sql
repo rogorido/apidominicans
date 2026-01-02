@@ -1,7 +1,7 @@
 --- We get all keys used in persons_details
 --- and specific keys with specific informations (cargo, muerte, etc.)
 
-SELECT DISTINCT jsonb_object_keys(details), COUNT(*)
+SELECT DISTINCT jsonb_object_keys(details), COUNT(*) as total
   FROM persons_details a
   join missions_persons b using(person_id)
   GROUP BY 1
