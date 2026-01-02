@@ -1,6 +1,6 @@
 {
   "name": "apidominicans",
-  "version": "0.9.38",
+  "version": "0.9.39",
   "description": "API for analyzing the Dominican Order in the early modern period.",
   "main": "main.js",
   "scripts": {
@@ -17,11 +17,11 @@
     "@tidyjs/tidy": "^2.5.2",
     "bluebird": "^3.7.2",
     "compression": "^1.7.4",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.6.1",
     "fastify": "^5.6.2",
     "pg": "^8.16.3",
-    "pg-monitor": "^2.0.0",
-    "pg-promise": "^11.4.3"
+    "pg-monitor": "^2.1.0",
+    "pg-promise": "^11.15.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22",
