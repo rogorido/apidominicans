@@ -1,3 +1,5 @@
+--- Missions, resignations, etc.
+
 --- duration of the travels
 
 WITH misiones AS
@@ -9,3 +11,5 @@ WITH misiones AS
          (arrival_date - begin_date) / 365.0 as durationinyears
   FROM misiones
   WHERE mission_number != 2 AND mission_number != 39;
+
+

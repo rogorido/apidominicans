@@ -2,6 +2,7 @@ const { db } = require("../../db/dbconnect");
 
 const sqls = require("../../helpers/readsqls/readsqls-philippines");
 
+// TODO: is this multi or db.many?
 async function missionsGeneral(request, reply) {
   try {
     const [missionsGeneral] = await db.multi(sqls.sqlMissionsGeneral);
