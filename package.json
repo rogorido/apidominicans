@@ -1,6 +1,6 @@
 {
   "name": "apidominicans",
-  "version": "0.9.43",
+  "version": "0.9.44",
   "description": "API for analyzing the Dominican Order in the early modern period.",
   "main": "main.js",
   "scripts": {

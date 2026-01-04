@@ -21,6 +21,15 @@ fastify.register(require("@fastify/cors"), {
   methods: "GET,POST,OPTIONS",
 });
 
+fastify.route({
+  method: "GET",
+  url: "/health",
+  config: { cors: false }, // <-- desactiva CORS solo para esta ruta
+  handler: async (req, reply) => {
+    return { status: "ok", timestamp: Date.now() };
+  },
+});
+
 fastify.register(require("@fastify/rate-limit"), {
   max: 180,
   timeWindow: "1 minute",
