@@ -1,4 +1,7 @@
 # get statisticslanguages
+GET http://localhost:8001/philippines/statistics/general/
+
+# get statisticslanguages
 GET http://localhost:8001/philippines/statistics/keys/
 
 # get statisticslanguages
@@ -21,4 +24,17 @@ GET http://localhost:8001/philippines/others/languages/
 
 # get births, deaths...
 GET http://localhost:8001/philippines/persons/birthsdeaths/
+
+# professions
+GET http://localhost:8001/philippines/professions/
+
+# resignations
+GET http://localhost:8001/philippines/persons/resignations/
+
+# otro
+GET http://localhost:8001/health
+
+
+
+
 

@@ -4,9 +4,25 @@ const sqls = require("../../helpers/readsqls/readsqls-philippines");
 
 async function statsGeneral(request, reply) {
   try {
-    const [personsGeneral] = await db.multi(sqls.sqlStatsGeneral);
+    const [
+      personsGeneral,
+      missionsTotal,
+      birthPlacesTotal,
+      typePersonsTotal,
+      lookupTotal,
+      profHousesTotal,
+      provincesTotal,
+      resignationsTotal,
+    ] = await db.multi(sqls.sqlStatsGeneral);
     return reply.status(200).send({
       personsGeneral,
+      missionsTotal,
+      birthPlacesTotal,
+      typePersonsTotal,
+      lookupTotal,
+      profHousesTotal,
+      provincesTotal,
+      resignationsTotal,
     });
   } catch (err) {
     console.log(err);

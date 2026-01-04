@@ -4,6 +4,7 @@ const generalroutes = require("./philippines/generalroutes");
 const missions = require("./philippines/missions");
 const persons = require("./philippines/persons");
 const positions = require("./philippines/positions");
+const professions = require("./philippines/professions");
 const others = require("./philippines/others");
 
 async function routes(fastify, options) {
@@ -18,6 +19,9 @@ async function routes(fastify, options) {
 
   // positions, etc.
   fastify.get("/positions/", positions.positionsAll);
+
+  // positions, etc.
+  fastify.get("/professions/", professions.professionsAll);
 
   // missions
   fastify.get("/missions/general/", missions.missionsGeneral);

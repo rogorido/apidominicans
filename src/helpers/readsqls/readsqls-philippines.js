@@ -19,7 +19,11 @@ const sqlPersonbyIdDetails = readSQL(
   "../sql/philippines/personbyid_details.sql",
 );
 
+// positions
 const sqlPositions = readSQL("../sql/philippines/persons_positions.sql");
+
+// professions
+const sqlProfessions = readSQL("../sql/philippines/professions.sql");
 
 // missions
 const sqlMissionsGeneral = readSQL("../sql/philippines/missions_travel.sql");
@@ -38,5 +42,6 @@ module.exports = {
   sqlPersonsResignations,
   sqlMissionsGeneral,
   sqlPositions,
+  sqlProfessions,
   sqlLanguages,
 };
