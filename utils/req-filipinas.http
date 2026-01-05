@@ -8,6 +8,12 @@ GET http://localhost:8001/philippines/statistics/keys/
 GET http://localhost:8001/general/version
 
 # get author 
+GET http://localhost:8001/philippines/persons/
+
+# get author 
+GET http://localhost:8001/philippines/persons/mostinfo/
+
+# get author 
 GET http://localhost:8001/philippines/persons/1517
 
 # get author: debería dar un error; how to handle this?

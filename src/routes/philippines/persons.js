@@ -2,9 +2,19 @@ const { db } = require("../../db/dbconnect");
 
 const sqls = require("../../helpers/readsqls/readsqls-philippines");
 
+async function personsAllFlat(request, reply) {
+  try {
+    const personsAllFlat = await db.query(sqls.sqlPersonsAll);
+    return reply.status(200).send(personsAllFlat);
+  } catch (err) {
+    console.log(err);
+    return reply.status(400).send(err);
+  }
+}
+
 async function personsMostInfo(request, reply) {
   try {
-    const personsMostInfo = await db.query(sqls.sqlPersons);
+    const personsMostInfo = await db.query(sqls.sqlPersonsMostInfo);
     return reply.status(200).send(personsMostInfo);
   } catch (err) {
     console.log(err);
@@ -75,6 +85,7 @@ async function personsResignations(request, reply) {
 }
 
 module.exports = {
+  personsAllFlat,
   personsMostInfo,
   personsId,
   personsBirthsDeaths,

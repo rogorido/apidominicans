@@ -12,7 +12,8 @@ async function routes(fastify, options) {
   fastify.get("/statistics/keys/", generalroutes.statsKeys);
 
   // persons
-  fastify.get("/persons/", persons.personsMostInfo);
+  fastify.get("/persons/", persons.personsAllFlat);
+  fastify.get("/persons/mostinfo/", persons.personsMostInfo);
   fastify.get("/persons/:id", persons.personsId);
   fastify.get("/persons/birthsdeaths/", persons.personsBirthsDeaths);
   fastify.get("/persons/resignations/", persons.personsResignations);

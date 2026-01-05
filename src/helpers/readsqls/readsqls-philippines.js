@@ -7,7 +7,8 @@ const sqlKeysUsed = readSQL("../sql/philippines/keys_used.sql");
 
 // persons
 // TODO: esto de los births es un agregado. el otro es un total!
-const sqlPersons = readSQL("../sql/philippines/persons.sql");
+const sqlPersonsAll = readSQL("../sql/philippines/persons_all.sql");
+const sqlPersonsMostInfo = readSQL("../sql/philippines/persons_mostinfo.sql");
 const sqlPersonsBirthsDeaths = readSQL(
   "../sql/philippines/persons_birthsdeaths.sql",
 );
@@ -35,7 +36,8 @@ const sqlLanguages = readSQL("../sql/philippines/others.sql");
 module.exports = {
   sqlStatsGeneral,
   sqlKeysUsed,
-  sqlPersons,
+  sqlPersonsAll,
+  sqlPersonsMostInfo,
   sqlPersonbyId,
   sqlPersonbyIdDetails,
   sqlPersonsBirthsDeaths,
