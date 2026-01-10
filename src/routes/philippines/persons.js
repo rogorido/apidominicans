@@ -29,13 +29,19 @@ function personsId(request, reply) {
     return reply.status(500).send({ message: "No person_id" });
   }
 
-  db.task("authorbyid", async (t) => {
+  db.task("personbyid", async (t) => {
     const personflat = await t.one(sqls.sqlPersonbyId, person_id);
-    const details = await t.any(sqls.sqlPersonbyIdDetails, person_id);
+    const [details, offices, deaths, travels] = await t.multi(
+      sqls.sqlPersonbyIdDetails,
+      person_id,
+    );
 
     return {
       personflat,
       details,
+      offices,
+      deaths,
+      travels,
     };
   })
     .then((data) => {
@@ -84,10 +90,33 @@ async function personsResignations(request, reply) {
   }
 }
 
+// Function used in the page person/:id
+// for showing details about cargos, etc.
+async function personsIdDetails(request, reply) {
+  try {
+    const [
+      personsResigns,
+      resignationsAggMission,
+      timeToResign,
+      aggTypePerson,
+    ] = await db.multi(sqls.sqlPersonsResignations);
+    return reply.status(200).send({
+      personsResigns,
+      resignationsAggMission,
+      timeToResign,
+      aggTypePerson,
+    });
+  } catch (err) {
+    console.log(err);
+    return reply.status(400).send(err);
+  }
+}
+
 module.exports = {
   personsAllFlat,
   personsMostInfo,
   personsId,
   personsBirthsDeaths,
   personsResignations,
+  personsIdDetails,
 };

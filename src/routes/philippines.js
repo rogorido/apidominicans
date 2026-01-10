@@ -15,6 +15,7 @@ async function routes(fastify, options) {
   fastify.get("/persons/", persons.personsAllFlat);
   fastify.get("/persons/mostinfo/", persons.personsMostInfo);
   fastify.get("/persons/:id", persons.personsId);
+  fastify.get("/persons/details/:id", persons.personsIdDetails);
   fastify.get("/persons/birthsdeaths/", persons.personsBirthsDeaths);
   fastify.get("/persons/resignations/", persons.personsResignations);
 
