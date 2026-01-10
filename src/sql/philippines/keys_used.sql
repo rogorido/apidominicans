@@ -23,13 +23,16 @@ WHERE details ? 'muerte'
   GROUP BY 1
   ORDER BY 2 desc;
 
---- We get all keys used in persons_details with viaje
-SELECT DISTINCT jsonb_object_keys(details), count(*) as total
+--- We get all keys used in persons_details with muerte
+--- NOTE: Important: is this case we have always a object viaje!
+--- we hat to extract the value with jsonb_extract_path.
+SELECT DISTINCT jsonb_object_keys(jsonb_extract_path(details, 'viaje')), count(*) as total
 FROM persons_details
 join missions_persons b using(person_id)
 WHERE details ? 'viaje'
   GROUP BY 1
   ORDER BY 2 desc;
+
 
 --- We get all keys used in persons_details with renuncia
 SELECT DISTINCT jsonb_object_keys(details), count(*) as total

@@ -14,7 +14,7 @@ GET http://localhost:8001/philippines/persons/
 GET http://localhost:8001/philippines/persons/mostinfo/
 
 # get author 
-GET http://localhost:8001/philippines/persons/1517
+GET http://localhost:8001/philippines/persons/720
 
 # get author: debería dar un error; how to handle this?
 GET http://localhost:8001/philippines/persons/xxx
