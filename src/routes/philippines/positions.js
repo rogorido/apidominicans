@@ -40,12 +40,14 @@ async function positionsId(request, reply) {
       allPositionsIdData,
       tableFlatPositionId,
       totalHousesPositionId,
+      totalPlacesPositionId,
       totalMateriasPositionId,
     ] = await db.multi(sqls.sqlPositionsId, position);
     return reply.status(200).send({
       allPositionsIdData,
       tableFlatPositionId,
       totalHousesPositionId,
+      totalPlacesPositionId,
       totalMateriasPositionId,
     });
   } catch (err) {
