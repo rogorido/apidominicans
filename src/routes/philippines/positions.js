@@ -1,4 +1,4 @@
-const { db } = require("../../db/dbconnect");
+const { db, pgp } = require("../../db/dbconnect");
 
 const sqls = require("../../helpers/readsqls/readsqls-philippines");
 
@@ -18,6 +18,43 @@ async function positionsAll(request, reply) {
   }
 }
 
+async function positionsId(request, reply) {
+  console.log(request.params);
+  const position = request.params.position;
+
+  if (position == null || position == "") {
+    return reply.status(500).send({ message: "No position" });
+  }
+
+  const positiontosend = `{"cargo": "${position}" }`;
+
+  try {
+    // const [allPositionsIdData] = await db.multi(sqls.sqlPositionsId, {
+    //   position: position,
+    // });
+    const { toPostgres } = pgp.as.ctf; // Custom Type Formatting symbols namespace
+    const query = sqls.sqlPersonbyId[toPostgres](); // qf = an object of type QueryFile
+
+    console.log(query);
+    const [
+      allPositionsIdData,
+      tableFlatPositionId,
+      totalHousesPositionId,
+      totalMateriasPositionId,
+    ] = await db.multi(sqls.sqlPositionsId, position);
+    return reply.status(200).send({
+      allPositionsIdData,
+      tableFlatPositionId,
+      totalHousesPositionId,
+      totalMateriasPositionId,
+    });
+  } catch (err) {
+    console.log(err);
+    return reply.status(400).send(err);
+  }
+}
+
 module.exports = {
   positionsAll,
+  positionsId,
 };

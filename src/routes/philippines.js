@@ -21,6 +21,7 @@ async function routes(fastify, options) {
 
   // positions, etc.
   fastify.get("/positions/", positions.positionsAll);
+  fastify.get("/positions/:position", positions.positionsId);
 
   // positions, etc.
   fastify.get("/professions/", professions.professionsAll);

@@ -22,6 +22,9 @@ GET http://localhost:8001/philippines/persons/xxx
 # get positions
 GET http://localhost:8001/philippines/positions/
 
+# get positions deetails
+GET http://localhost:8001/philippines/positions/vicario
+
 # get missions
 GET http://localhost:8001/philippines/missions/general/
 
