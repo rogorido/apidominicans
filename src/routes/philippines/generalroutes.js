@@ -13,6 +13,7 @@ async function statsGeneral(request, reply) {
       profHousesTotal,
       provincesTotal,
       resignationsTotal,
+      interesting_percs,
     ] = await db.multi(sqls.sqlStatsGeneral);
     return reply.status(200).send({
       personsGeneral,
@@ -23,6 +24,7 @@ async function statsGeneral(request, reply) {
       profHousesTotal,
       provincesTotal,
       resignationsTotal,
+      interesting_percs,
     });
   } catch (err) {
     console.log(err);
