@@ -21,6 +21,40 @@ fastify.register(require("@fastify/cors"), {
   methods: "GET,POST,OPTIONS",
 });
 
+fastify.register(require("@fastify/swagger"), {
+  openapi: {
+    openapi: "3.0.0",
+    info: {
+      title: "Test swagger",
+      description: "Testing the Fastify swagger API",
+      version: "0.1.0",
+    },
+    servers: [
+      {
+        url: "http://localhost:8001",
+        description: "Development server",
+      },
+    ],
+    tags: [
+      { name: "user", description: "User related end-points" },
+      { name: "admin", description: "Admin end-points" },
+    ],
+    components: {},
+    externalDocs: {
+      url: "https://swagger.io",
+      description: "Find more info here",
+    },
+  },
+});
+
+fastify.register(require("@fastify/swagger-ui"), {
+  routePrefix: "/docs-ui",
+  uiConfig: {
+    docExpansion: "list",
+    deepLinking: false,
+  },
+});
+
 fastify.route({
   method: "GET",
   url: "/health",
@@ -51,3 +85,4 @@ fastify.listen({ port: process.env.PORT }, (err) => {
     process.exit(1);
   }
 });
+//fastify.swagger();

@@ -1,9 +1,19 @@
 const { db } = require("../db/dbconnect");
 
+const generalschema = require("../schemas/general");
+
+console.log(generalschema);
+
 async function routes(fastify, options) {
-  fastify.get("/version", async (request, reply) => {
-    return { version: process.env.npm_package_version };
-  });
+  fastify.get(
+    "/version",
+    {
+      schema: generalschema,
+    },
+    async (request, reply) => {
+      return { version: process.env.npm_package_version };
+    },
+  );
 
   fastify.get("/datos", async (request, reply) => {
     try {
