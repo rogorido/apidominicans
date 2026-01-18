@@ -2,11 +2,22 @@
 const getAllHouses = {
   schema: {
     description: "Get list of all houses.",
-    tags: ["admin"],
+    tags: ["houses"],
     response: {
       200: { $ref: "getAllHousesResponse" },
     },
   },
 };
 
-module.exports = { getAllHouses };
+// route /houses/provinces
+const getHousesProvinces = {
+  schema: {
+    description: "Get list of all houses.",
+    tags: ["houses"],
+    response: {
+      200: { $ref: "getHousesProvincesResponse" },
+    },
+  },
+};
+
+module.exports = { getAllHouses, getHousesProvinces };

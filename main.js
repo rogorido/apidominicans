@@ -28,8 +28,9 @@ fastify.register(require("@fastify/swagger"), {
   openapi: {
     openapi: "3.0.0",
     info: {
-      title: "Test swagger",
-      description: "Testing the Fastify swagger API",
+      title: "OpenAPI for apidominicans",
+      description:
+        "Documentation for the Application Programming Interfaces apidominicans.",
       version: "0.1.0",
     },
     servers: [

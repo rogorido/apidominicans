@@ -15,4 +15,18 @@ module.exports = {
       },
     },
   },
+
+  // get Provinces and houses
+  getHousesProvincesReponse: {
+    $id: "getHousesProvincesResponse",
+    type: "array",
+    items: {
+      type: "object",
+      properties: {
+        province_id: { type: "integer" },
+        province_name: { type: "string" },
+        total: { type: "integer" },
+      },
+    },
+  },
 };

@@ -29,15 +29,19 @@ async function routes(fastify, options) {
     }
   });
 
-  fastify.get("/provinces/", async (request, reply) => {
-    try {
-      const provList = await db.many(sqlHousesProvinces);
-      return reply.status(200).send(provList);
-    } catch (err) {
-      console.log(err);
-      return reply.status(400).send(err);
-    }
-  });
+  fastify.get(
+    "/provinces/",
+    schemas.getHousesProvinces,
+    async (request, reply) => {
+      try {
+        const provList = await db.many(sqlHousesProvinces);
+        return reply.status(200).send(provList);
+      } catch (err) {
+        console.log(err);
+        return reply.status(400).send(err);
+      }
+    },
+  );
 }
 
 module.exports = routes;
