@@ -1,4 +1,7 @@
 const fastify = require("fastify")({ logger: { level: "info" } });
+const schemas = require("./src/schemas");
+
+// console.log(schemas);
 
 const helmet = require("@fastify/helmet");
 
@@ -39,7 +42,9 @@ fastify.register(require("@fastify/swagger"), {
       { name: "user", description: "User related end-points" },
       { name: "admin", description: "Admin end-points" },
     ],
-    components: {},
+    components: {
+      schemas: {}, // Fastify completará aquí cuando añadamos los schemas
+    },
     externalDocs: {
       url: "https://swagger.io",
       description: "Find more info here",
@@ -54,6 +59,11 @@ fastify.register(require("@fastify/swagger-ui"), {
     deepLinking: false,
   },
 });
+
+// ----------------------------------------------------
+// We add the schemas to fastify
+// ----------------------------------------------------
+Object.values(schemas).forEach((schema) => fastify.addSchema(schema));
 
 fastify.route({
   method: "GET",

@@ -6,6 +6,8 @@ const {
   sqlHousesSocio,
 } = require("../helpers/readsqls/readsqls");
 
+const schemas = require("../helpers/schemadescriptions");
+
 async function routes(fastify, options) {
   fastify.get("/statistics/general/", async (request, reply) => {
     try {
@@ -17,7 +19,7 @@ async function routes(fastify, options) {
     }
   });
 
-  fastify.get("/houses/", async (request, reply) => {
+  fastify.get("/houses/", schemas.getAllHouses, async (request, reply) => {
     try {
       const housesList = await db.many(sqlHousesSocio);
       return reply.status(200).send(housesList);
