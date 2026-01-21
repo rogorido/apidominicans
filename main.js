@@ -19,7 +19,7 @@ fastify.addHook("onRequest", (request, reply, done) => {
 // el asunto es este: https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request
 // cuando hace un POST realmente pregunta antes al servidor con el método OPTIONS...
 fastify.register(require("@fastify/cors"), {
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000", "https://dominicans.georeligion.org"],
   methods: "GET,POST,OPTIONS",
 });
 
