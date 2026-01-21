@@ -32,10 +32,9 @@ async function positionsId(request, reply) {
     // const [allPositionsIdData] = await db.multi(sqls.sqlPositionsId, {
     //   position: position,
     // });
-    const { toPostgres } = pgp.as.ctf; // Custom Type Formatting symbols namespace
-    const query = sqls.sqlPersonbyId[toPostgres](); // qf = an object of type QueryFile
+    const formattedSql = pgp.as.format(sqls.sqlPositionsId, position);
 
-    console.log(query);
+    console.log(formattedSql);
     const [
       allPositionsIdData,
       tableFlatPositionId,

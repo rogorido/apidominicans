@@ -1,5 +1,5 @@
 # get statisticslanguages
-GET http://localhost:8001/works/statistics/general
+GET http://localhost:8001/works/statistics/general/
 
 # get cateogorías
 GET http://localhost:8001/works/categories
@@ -14,13 +14,10 @@ GET http://localhost:8001/works/categories/x
 GET http://localhost:8001/works/authors/
 
 # get all places
-GET http://localhost:8001/works/places
+GET http://localhost:8001/works/places/
 
 # get all places: should give an error bcause of last /
 GET http://localhost:8001/works/places/
-
-# get roma 
-GET http://localhost:8001/works/places/?place_id=3
 
 # get roma 
 GET http://localhost:8001/works/places/3

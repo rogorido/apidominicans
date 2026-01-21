@@ -31,7 +31,7 @@ function getFormattedQuery(sql, filters) {
 
 async function routes(fastify, options) {
   // no async here because we use db.task!
-  fastify.get("/statistics/general", (request, reply) => {
+  fastify.get("/statistics/general/", (request, reply) => {
     db.task("stats-general", async (t) => {
       // multi returns an Array of arrays. Y por tnato luego tengo q coger
       // el primer elemento...
@@ -112,6 +112,7 @@ async function routes(fastify, options) {
       });
   });
 
+  // NOTE: important, no trailing / because of the next route!
   fastify.get("/places", async (request, reply) => {
     try {
       const places = await db.many(sqlPlacesTotal);
@@ -133,16 +134,21 @@ async function routes(fastify, options) {
       const place_cats = await t.any(sqlPlacesbyIdCategories, place_id);
       const decades = await t.any(sqlPlacesbyIdDecades, place_id);
 
-      const [place_name, coords, authors, noprintdata] = await t.multi(
-        sqlPlacesbyIdOtherData,
-        place_id,
-      );
+      const [
+        place_name,
+        coords,
+        totalWorksWithReeditions,
+        totalWorksWithoutReeditions,
+        totalManuscripts,
+        authors,
+        noprintdata,
+      ] = await t.multi(sqlPlacesbyIdOtherData, place_id);
 
       const totalFormats = await t.many(sqlFormats, {
         wheresql: pgp.as.format("where place_print_id = $1", place_id),
       });
 
-      // añadir otro de autores pero habría q dividirlo por los q son originales
+      // TODO: añadir otro de autores pero habría q dividirlo por los q son originales
       // y los q son reedciones
 
       return {
@@ -150,6 +156,9 @@ async function routes(fastify, options) {
         place_cats,
         decades,
         coords,
+        totalWorksWithReeditions: totalWorksWithReeditions[0].total,
+        totalWorksWithoutReeditions: totalWorksWithoutReeditions[0].total,
+        totalManuscripts: totalManuscripts[0].total,
         authors: authors[0].total,
         noprintdata: noprintdata[0],
         totalFormats,
