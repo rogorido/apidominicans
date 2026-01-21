@@ -30,6 +30,7 @@ fastify.register(require("@fastify/swagger-ui"), {
   uiConfig: {
     docExpansion: "list",
     deepLinking: false,
+    cors: false, // is this working???
   },
 });
 
