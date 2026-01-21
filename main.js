@@ -1,7 +1,6 @@
 const fastify = require("fastify")({ logger: { level: "info" } });
 const schemas = require("./src/schemas");
-
-// console.log(schemas);
+const openapidescription = require("./src/openapi");
 
 const helmet = require("@fastify/helmet");
 
@@ -24,34 +23,7 @@ fastify.register(require("@fastify/cors"), {
   methods: "GET,POST,OPTIONS",
 });
 
-fastify.register(require("@fastify/swagger"), {
-  openapi: {
-    openapi: "3.0.0",
-    info: {
-      title: "OpenAPI for apidominicans",
-      description:
-        "Documentation for the Application Programming Interfaces apidominicans.",
-      version: "0.1.0",
-    },
-    servers: [
-      {
-        url: "http://localhost:8001",
-        description: "Development server",
-      },
-    ],
-    tags: [
-      { name: "user", description: "User related end-points" },
-      { name: "admin", description: "Admin end-points" },
-    ],
-    components: {
-      schemas: {}, // Fastify completará aquí cuando añadamos los schemas
-    },
-    externalDocs: {
-      url: "https://swagger.io",
-      description: "Find more info here",
-    },
-  },
-});
+fastify.register(require("@fastify/swagger"), openapidescription);
 
 fastify.register(require("@fastify/swagger-ui"), {
   routePrefix: "/docs-ui",
@@ -69,7 +41,7 @@ Object.values(schemas).forEach((schema) => fastify.addSchema(schema));
 fastify.route({
   method: "GET",
   url: "/health",
-  config: { cors: false }, // <-- desactiva CORS solo para esta ruta
+  config: { cors: false }, // <-- No CORS on this route
   handler: async (req, reply) => {
     return { status: "ok", timestamp: Date.now() };
   },
@@ -80,7 +52,7 @@ fastify.register(require("@fastify/rate-limit"), {
   timeWindow: "1 minute",
 });
 
-// We declare a route
+// We declare the routes
 fastify.register(require("./src/routes/general"), { prefix: "/general" });
 fastify.register(require("./src/routes/works"), { prefix: "/works" });
 fastify.register(require("./src/routes/houses"), { prefix: "/houses" });
