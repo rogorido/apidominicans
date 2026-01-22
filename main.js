@@ -27,6 +27,7 @@ fastify.register(require("@fastify/swagger"), openapidescription);
 
 fastify.register(require("@fastify/swagger-ui"), {
   routePrefix: "/docs-ui",
+  staticCSP: true,
   uiConfig: {
     docExpansion: "list",
     deepLinking: false,
