@@ -29,7 +29,7 @@ module.exports = {
       description:
         "This is the REST API of the Early Modern Dominican Ordern (EMDO) database.<br>With these Web services you have direct access to the data of the EMDO database by using a software of your choice. This Web page also allows to test the provided services directly.",
       version: "0.1.0",
-      termsOfService: "https://wortschatz-leipzig.de/usage",
+      termsOfService: "https://dominicans.georeligion.org/getdata",
       contact: {
         name: "Igor Sosa Mayor",
         email: "igor.sosa@eui.eu",
