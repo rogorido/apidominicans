@@ -21,19 +21,23 @@ function getServers() {
   ];
 }
 
-const jodienda = getServers();
-
-console.log("el valor es", process.env.PROD_SERVER_OPENAPI);
-console.log("jodienda es", jodienda);
-
 module.exports = {
   openapi: {
     openapi: "3.1.0",
     info: {
       title: "Rest API for Early Modern Dominican Order Project",
       description:
-        "Documentation for the Application Programming Interfaces apidominicans.",
+        "This is the REST API of the Early Modern Dominican Ordern (EMDO) database.<br>With these Web services you have direct access to the data of the EMDO database by using a software of your choice. This Web page also allows to test the provided services directly.",
       version: "0.1.0",
+      termsOfService: "https://wortschatz-leipzig.de/usage",
+      contact: {
+        name: "Igor Sosa Mayor",
+        email: "igor.sosa@eui.eu",
+      },
+      license: {
+        name: "CC BY 4.0",
+        url: "http://creativecommons.org/licenses/by/4.0/",
+      },
     },
     servers: getServers(),
     tags: [
