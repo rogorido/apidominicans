@@ -1,3 +1,31 @@
+require("dotenv").config();
+
+function getServers() {
+  const env = process.env.NODE_ENV || "development";
+
+  if (env === "production") {
+    return [
+      {
+        url: process.env.PROD_SERVER_OPENAPI,
+        description: "Production server",
+      },
+    ];
+  }
+
+  // caso default: development
+  return [
+    {
+      url: process.env.DEV_SERVER_OPENAPI,
+      description: "Development server",
+    },
+  ];
+}
+
+const jodienda = getServers();
+
+console.log("el valor es", process.env.PROD_SERVER_OPENAPI);
+console.log("jodienda es", jodienda);
+
 module.exports = {
   openapi: {
     openapi: "3.1.0",
@@ -7,12 +35,7 @@ module.exports = {
         "Documentation for the Application Programming Interfaces apidominicans.",
       version: "0.1.0",
     },
-    servers: [
-      {
-        url: "http://localhost:8001",
-        description: "Development server",
-      },
-    ],
+    servers: getServers(),
     tags: [
       { name: "user", description: "User related end-points" },
       { name: "admin", description: "Admin end-points" },
